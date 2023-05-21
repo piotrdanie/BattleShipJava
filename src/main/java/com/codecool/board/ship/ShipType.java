@@ -1,11 +1,11 @@
 package com.codecool.board.ship;
 
 public enum ShipType {
-    CARRIER(1),
-    CRUISER(2),
+    CARRIER(5),
+    CRUISER(4),
     BATTLESHIP(3),
-    SUBMARINE(4),
-    DESTROYER(5);
+    SUBMARINE(2),
+    DESTROYER(1);
 
 
     private final int size;

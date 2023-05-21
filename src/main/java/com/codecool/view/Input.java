@@ -11,6 +11,6 @@ public class Input {
     }
 
     public String getSquare() {
-
+        return "string";
     }
 }

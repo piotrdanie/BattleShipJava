@@ -1,4 +1,17 @@
 package com.codecool.board;
 
+import com.codecool.board.square.Square;
+
 public class Board {
+
+    private final int BOARD_SIZE = 10;
+    private Square[][] ocean;
+
+    // ?????????????????????????????????????????
+    // jak i gdzie wrzucić ilości statków?
+    // można dać jako static ale to nie będzię obiektowe
+
+    public Board() {
+        ocean = new Square[BOARD_SIZE][BOARD_SIZE];
+    }
 }
