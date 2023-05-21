@@ -54,4 +54,24 @@ public class Display {
     public static void printMessage(String string) {
         System.out.println(string);
     }
+
+    private void translationCharToEmoji() {
+
+        // translation_char_to_emoji = {
+        //    '#':'🧱',
+        //    '@':'🧍',
+        //    '&':'🧚',
+        //    '!':'👾',
+        //    '>':'🚪',
+        //    '*':'🍕',
+        //    '%':'🔫',
+        //    '^':'⚡',
+        //    '+':'💎',
+        //    '?':'🧛',
+        //    '1':' 1️⃣',
+        //    '2':' 2️⃣',
+        //    '3':' 3️⃣',
+        //    ' ':'  '
+        //    }
+    }
 }
