@@ -15,7 +15,7 @@ public class Battleship {
 
     public void startApp() {
         while(true) {
-            // display menu
+            display.printMenu();
             // choose the options
         }
     }

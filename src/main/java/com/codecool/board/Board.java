@@ -1,10 +1,11 @@
 package com.codecool.board;
 
 import com.codecool.board.square.Square;
+import com.codecool.board.square.SquareStatus;
 
 public class Board {
 
-    private final int BOARD_SIZE = 10;
+    private final int size = 10;
     private Square[][] ocean;
 
     // ?????????????????????????????????????????
@@ -12,6 +13,16 @@ public class Board {
     // można dać jako static ale to nie będzię obiektowe
 
     public Board() {
-        ocean = new Square[BOARD_SIZE][BOARD_SIZE];
+        ocean = new Square[size][size];
+    }
+
+    // ?????????????????????????
+    // validacja
+    public boolean isPlacementOk(Coordinates coordinates) {
+        return (ocean[coordinates.getX()][coordinates.getY()].getSquareStatus().equals(SquareStatus.EMPTY));
+    }
+
+    public Square[][] getSquares() {
+        return this.ocean;
     }
 }
