@@ -26,6 +26,4 @@ public class Board {
     public Square[][] getSquares() {
         return this.ocean;
     }
-
-
 }

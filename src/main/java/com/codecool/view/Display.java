@@ -27,6 +27,7 @@ public class Display {
         System.out.println("'q' - press anytime to exit");
     }
 
+
     public void printGameModeMenu() {
         System.out.println("GAME MODES:");
         System.out.println("1. Player vs Player");

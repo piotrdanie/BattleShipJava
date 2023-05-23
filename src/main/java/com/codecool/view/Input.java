@@ -12,7 +12,11 @@ public class Input {
         scanner = new Scanner(System.in);
     }
 
-    public int getNumberBetween(int min, int max) {
+    public String getInputString() {
+//        Display.printMessage("Choose options (between " + min + " and " + max + "): ");
+        return scanner.next();
+    }
+    public int getInputInteger(int min, int max) {
         Display.printMessage("Choose options (between " + min + " and " + max + "): ");
         return scanner.nextInt();
     }
