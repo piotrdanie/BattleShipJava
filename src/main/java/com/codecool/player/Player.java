@@ -1,6 +1,6 @@
 package com.codecool.player;
 
-import com.codecool.board.ship.Ship;
+import com.codecool.ship.Ship;
 
 import java.util.List;
 

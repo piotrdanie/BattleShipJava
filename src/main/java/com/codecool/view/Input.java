@@ -1,8 +1,6 @@
 package com.codecool.view;
 
 import com.codecool.board.Coordinates;
-import com.codecool.board.square.Square;
-import com.codecool.board.square.SquareStatus;
 
 import java.util.Scanner;
 

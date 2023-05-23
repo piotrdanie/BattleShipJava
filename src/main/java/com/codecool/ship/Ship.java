@@ -1,13 +1,13 @@
-package com.codecool.board.ship;
+package com.codecool.ship;
 
-import com.codecool.board.square.Square;
+import com.codecool.square.Square;
 
 import java.util.List;
 
 public class Ship {
 
     private List<Square> squares;
-    private ShipType shipType;
+    public ShipType shipType;
 
     public Ship(List<Square> squares, ShipType shipType) {
         this.squares = squares;

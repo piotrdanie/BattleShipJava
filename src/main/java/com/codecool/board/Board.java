@@ -1,7 +1,7 @@
 package com.codecool.board;
 
-import com.codecool.board.square.Square;
-import com.codecool.board.square.SquareStatus;
+import com.codecool.square.Square;
+import com.codecool.square.SquareStatus;
 
 public class Board {
 
@@ -9,8 +9,9 @@ public class Board {
     private Square[][] ocean;
 
     // ?????????????????????????????????????????
-    // jak i gdzie wrzucić ilości statków?
+    // jak i gdzie wrzucić ilości statków? ta informacja jest w klasie Player
     // można dać jako static ale to nie będzię obiektowe
+    // lista enumów
 
     public Board() {
         ocean = new Square[size][size];
@@ -25,4 +26,6 @@ public class Board {
     public Square[][] getSquares() {
         return this.ocean;
     }
+
+
 }

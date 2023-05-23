@@ -1,6 +1,6 @@
 package com.codecool.board;
 
-import com.codecool.board.square.Square;
+import com.codecool.square.Square;
 import com.codecool.view.Input;
 
 public class BoardFactory {

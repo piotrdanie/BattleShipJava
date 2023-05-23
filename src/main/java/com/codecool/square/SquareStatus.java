@@ -1,4 +1,4 @@
-package com.codecool.board.square;
+package com.codecool.square;
 
 public enum SquareStatus {
     EMPTY('□'),

@@ -1,4 +1,4 @@
-package com.codecool.board.ship;
+package com.codecool.ship;
 
 public enum ShipType {
     CARRIER(5),
@@ -17,5 +17,11 @@ public enum ShipType {
     public int getSize() {
         return this.size;
     }
+
+//    public static void main(String args){
+//        ShipType shipType = ShipType.CARRIER;
+//        ShipType shipType1 = ShipType.DESTROYER;
+//        System.out.println(shipType == shipType1);
+//    }
 
 }
