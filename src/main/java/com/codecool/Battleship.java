@@ -24,8 +24,17 @@ public class Battleship {
         input = new Input();
     }
 
+
     public void startApp() {
         while (true) {
+
+            // try to start game, if game is not initialized it won't start
+            try {
+                game.startGame();
+            } catch (Exception e) {
+
+            }
+
             display.printMenu();
             try {
                 int menuChoice = input.getInputInteger(MIN_MENU_CHOICE, MAX_MENU_CHOICE);
@@ -100,7 +109,4 @@ public class Battleship {
         this.game = game;
     }
 
-    public Game getGame() {
-        return game;
-    }
 }
