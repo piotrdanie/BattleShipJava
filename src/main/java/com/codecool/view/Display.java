@@ -1,5 +1,7 @@
 package com.codecool.view;
 
+import java.io.IOException;
+
 public class Display {
 
     public Display() {
@@ -42,6 +44,10 @@ public class Display {
         System.out.println("3. Hard");
     }
 
+    public void printHallOfFame() {
+
+    }
+
     public void printBoard() {
 
     }
@@ -50,8 +56,20 @@ public class Display {
 
     }
 
-    // ?????????????????????????????????????????????????????????????????
-    // jeżeli to będzie static to możemy się odwołać bez tworzenia obiektu
+    public final static void clearConsole() {
+        try {
+            final String os = System.getProperty("os.name");
+
+            if (os.contains("Windows")) {
+                Runtime.getRuntime().exec("cls");
+            } else {
+                Runtime.getRuntime().exec("clear");
+            }
+        } catch (final Exception e) {
+            System.out.println(e);
+        }
+    }
+
     public static void printMessage(String string) {
         System.out.println(string);
     }
