@@ -34,7 +34,7 @@ public class Display {
         System.out.println("GAME MODES:");
         System.out.println("1. Player vs Player");
         System.out.println("2. Player vs Computer");
-        System.out.println("3. Exit");
+        System.out.println("3. Computer vs Computer");
     }
 
     public void printOpponentLevelMenu() {

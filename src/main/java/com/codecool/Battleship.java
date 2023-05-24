@@ -66,7 +66,6 @@ public class Battleship {
                 setGame(new Game(GameMode.PLAYER_VS_PLAYER));
                 break;
             case 2:
-                setGame(new Game(GameMode.PLAYER_VS_PC));
                 int menuChoice = input.getInputInteger(MIN_MENU_CHOICE, MAX_MENU_CHOICE);
                 chooseGameLevelOption(menuChoice);
                 break;
@@ -81,13 +80,13 @@ public class Battleship {
     private void chooseGameLevelOption(int userChoice) {
         switch (userChoice) {
             case 1:
-                game.setGameLevel(GameLevel.EASY);
+                setGame(new Game(GameMode.PLAYER_VS_PC, GameLevel.EASY));
                 break;
             case 2:
-                game.setGameLevel(GameLevel.MEDIUM);
+                setGame(new Game(GameMode.PLAYER_VS_PC, GameLevel.MEDIUM));
                 break;
             case 3:
-                game.setGameLevel(GameLevel.HARD);
+                setGame(new Game(GameMode.PLAYER_VS_PC, GameLevel.HARD));
                 break;
             default:
                 Display.printMessage("Try again between " + MIN_MENU_CHOICE + " and " + MAX_MENU_CHOICE);

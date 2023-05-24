@@ -1,9 +1,4 @@
 package com.codecool.player;
 
-public class ComputerPlayer {
+public class ComputerPlayer extends Player {
 }
-
-// interface play
-
-//public abstract player {}
-//tu będą części z których będą korzystać klasy botPlayer i humanPlayer (tu wykorzytujemy polimorfizm)
