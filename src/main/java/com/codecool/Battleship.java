@@ -31,7 +31,10 @@ public class Battleship {
             // try to start game, if game is not initialized it won't start
             try {
                 game.startGame();
+                System.out.println("game started");
             } catch (Exception e) {
+                System.out.println("game not started yet");
+                System.out.println(e);
 
             }
 
@@ -102,8 +105,6 @@ public class Battleship {
                 break;
         }
     }
-
-
 
     public void setGame(Game game) {
         this.game = game;

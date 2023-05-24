@@ -4,6 +4,7 @@ import com.codecool.board.Board;
 import com.codecool.board.Coordinates;
 import com.codecool.ship.Ship;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Player {
@@ -14,6 +15,10 @@ public class Player {
     private Board shootingBoard;
     private Board checkingBoard;
     private List<Ship> ships;
+
+    public Player() {
+        this.ships = new ArrayList<Ship>();
+    }
 
     public boolean isAlive() {
         return ships.size() == 0;

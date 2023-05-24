@@ -29,17 +29,22 @@ public class Game {
     public Game(GameMode gameMode) {
         this.gameMode = gameMode;
         this.players = PlayerFactory.createPlayer();
+        this.firstPlayer = players.get(0);
+        this.secondPlayer = players.get(1);
     }
 
     public Game(GameMode gameMode, GameLevel gameLevel) {
         this.gameMode = gameMode;
         this.gameLevel = gameLevel;
         this.players = PlayerFactory.createPlayer(gameLevel);
+        this.firstPlayer = players.get(0);
+        this.secondPlayer = players.get(1);
     }
 
     public void startGame() {
+        System.out.println("game started");
         while (firstPlayer.isAlive() || secondPlayer.isAlive()) {
-            // TODO: main loop of the game;
+            break;
         }
 
         // if this is god option???
