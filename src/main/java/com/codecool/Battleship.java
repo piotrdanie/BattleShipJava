@@ -17,11 +17,13 @@ public class Battleship {
     private Display display;
     private Input input;
     private Game game;
+    private boolean isRunning;
 
 
     public Battleship() {
         display = new Display();
         input = new Input();
+        this.isRunning = true;
     }
 
 

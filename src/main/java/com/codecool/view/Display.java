@@ -41,7 +41,7 @@ public class Display {
         System.out.println("GAME MODES:");
         System.out.println("1. Easy");
         System.out.println("2. Normal");
-        System.out.println("3. Hard");
+//        System.out.println("3. Hard");
     }
 
     public void printHallOfFame() {

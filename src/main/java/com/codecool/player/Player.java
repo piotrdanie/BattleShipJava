@@ -3,6 +3,7 @@ package com.codecool.player;
 import com.codecool.board.Board;
 import com.codecool.board.Coordinates;
 import com.codecool.ship.Ship;
+import com.codecool.square.SquareStatus;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,6 +31,11 @@ public class Player {
     // because the game should validate it against the list of opponent ships coordinates.
     public  Coordinates shoot() {
         return new Coordinates(10, 10);
+    }
+
+    // informacja czy statek został zatopiony
+    public SquareStatus responseToShoot(Coordinates coordinates) {
+        return null;
     }
 
     public String getName() {
