@@ -1,6 +1,7 @@
 package com.codecool.game;
 
 import com.codecool.board.Board;
+import com.codecool.exceptions.DrawException;
 import com.codecool.player.Player;
 import com.codecool.player.PlayerFactory;
 
@@ -53,6 +54,42 @@ public class Game {
             if (!player.isAlive()) {
                 return;
             }
+
         }
+    }
+
+    private void playerTurn() {
+        // logic for player turn
+    }
+
+    private void checkWinner() {
+        try {
+            if (gameEnd()) {
+                Player winner = getWinner();
+                System.out.println(winner.getName());
+            }
+        } catch (DrawException e) {
+            // I think that it is not possible to get draw in battleship game
+            // but i think this is good point to ask how we should handle that kind of situations.
+            System.out.println("There is no winner draw");
+        }
+    }
+
+    private Player getWinner() throws DrawException {
+        for (Player player : players) {
+            if (player.isAlive()) {
+                return player;
+            }
+        }
+        throw new DrawException();
+    }
+
+    private boolean gameEnd() {
+        for(Player player : players) {
+            if (!player.isAlive()) {
+                return true;
+            }
+        }
+        return false;
     }
 }

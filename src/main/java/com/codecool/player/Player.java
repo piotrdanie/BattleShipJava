@@ -15,6 +15,7 @@ public class Player {
     private Board shootingBoard;
     private Board checkingBoard;
     private List<Ship> ships;
+    private String name;
 
     public Player() {
         this.ships = new ArrayList<Ship>();
@@ -31,4 +32,7 @@ public class Player {
         return new Coordinates(10, 10);
     }
 
+    public String getName() {
+        return name;
+    }
 }
