@@ -3,7 +3,7 @@ package com.codecool;
 import com.codecool.game.Game;
 import com.codecool.game.GameLevel;
 import com.codecool.game.GameMode;
-import com.codecool.util.ExitException;
+import com.codecool.exceptions.ExitException;
 import com.codecool.view.Display;
 import com.codecool.view.Input;
 

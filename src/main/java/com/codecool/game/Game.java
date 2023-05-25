@@ -17,7 +17,8 @@ public class Game {
     private List<Player> players;
 
     // second option is to initialize first player and second player
-    // which options is better I have no idea
+    // which options is better?
+    // In this option I have direct acess to the two of them at the same time
     private Player firstPlayer;
     private Player secondPlayer;
 
@@ -49,6 +50,9 @@ public class Game {
 
         // if this is god option???
         for( Player player : players) {
+            if (!player.isAlive()) {
+                return;
+            }
         }
     }
 }

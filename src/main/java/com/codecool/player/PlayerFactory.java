@@ -1,8 +1,6 @@
 package com.codecool.player;
 
 import com.codecool.game.GameLevel;
-import com.codecool.game.GameMode;
-import com.codecool.util.ExitException;
 
 import java.util.ArrayList;
 import java.util.List;

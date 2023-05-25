@@ -1,4 +1,4 @@
-package com.codecool.util;
+package com.codecool.exceptions;
 
 public class ExitException extends Exception {
 
