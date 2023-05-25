@@ -5,25 +5,33 @@ import com.codecool.square.SquareStatus;
 
 public class Board {
 
-    private final int size = 10;
+    private int size = 10;
     private Square[][] ocean;
 
-    // ?????????????????????????????????????????
-    // jak i gdzie wrzucić ilości statków? ta informacja jest w klasie Player
-    // można dać jako static ale to nie będzię obiektowe
-    // lista enumów
 
     public Board() {
         ocean = new Square[size][size];
+        initializeOcean();
     }
 
-    // ?????????????????????????
-    // validacja
     public boolean isPlacementOk(Coordinates coordinates) {
         return (ocean[coordinates.getX()][coordinates.getY()].getSquareStatus().equals(SquareStatus.EMPTY));
     }
 
     public Square[][] getSquares() {
         return this.ocean;
+    }
+
+
+    private void initializeOcean() {
+        for (int row = 0; row < size; row++) {
+            for (int col = 0; col < size; col++) {
+                ocean[row][col] = new Square(SquareStatus.EMPTY);
+            }
+        }
+    }
+
+    public Square[][] getOcean() {
+        return ocean;
     }
 }
