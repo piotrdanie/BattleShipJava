@@ -9,7 +9,7 @@ public class BoardFactory {
 
     public BoardFactory(Input input) {
         this.input = input;
-
+    }
 
 
 

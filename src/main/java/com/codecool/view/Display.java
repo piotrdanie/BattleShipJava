@@ -1,17 +1,19 @@
 package com.codecool.view;
 
+import com.codecool.CustomConfiguration;
 import com.codecool.board.Board;
-import com.codecool.board.BoardFactory;
-import com.codecool.square.Square;
 
-import java.io.IOException;
+import java.util.List;
 
 public class Display {
-    private int size = 10;
 
-    public Display() {
+    private CustomConfiguration configuration;
 
+
+    public Display(CustomConfiguration configuration) {
+        this.configuration = configuration;
     }
+
 
     public void printWelcomeScreen() {
         System.out.print("" +
@@ -27,23 +29,34 @@ public class Display {
     }
 
 
-    public void printHallOfFame() {
+    public void printMenu(List<String> options) {
+        System.out.println("Choose option:");
+        printOptions(options);
     }
 
+    private void printOptions(List<String> options) {
+        int i = 1;
+        for (String option : options) {
+            System.out.println(i + ". " + option);
+            i++;
+        }
+    }
+
+
     public void printBoard(Board board) {
-
-    // TODO System.out.println(play nr ...);
-
         System.out.println("  A B C D E F G H I J");
-        for (int row = 0; row < size; row++) {
+        for (int row = 0; row < configuration.getSize(); row++) {
             System.out.print(row + " ");
-            for (int col = 0; col < size; col++) {
+            for (int col = 0; col < configuration.getSize(); col++) {
                 System.out.print(board.getOcean()[row][col].getSquareStatus().getSymbol() + " ");
             }
             System.out.println();
         }
     }
 
+    public void printMessage(String message) {
+        System.out.print(message);
+    }
 
 
     public void printWinner() {
@@ -62,6 +75,10 @@ public class Display {
         } catch (final Exception e) {
             System.out.println(e);
         }
+    }
+
+    public void printExitMessage() {
+        System.out.println("The game exited");
     }
 
     private void translationCharToEmoji() {

@@ -6,16 +6,18 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-public class Configuration {
+public class CustomConfiguration {
 
     private HashMap<String, List<String>> listOptions;
     private HashMap<ShipType, Integer> numberOfShips;
+    private String exitButton;
     private int size;
 
-    public Configuration() {
+    public CustomConfiguration() {
         this.listOptions = initializeOptions();
         this.size = 10;
         this.numberOfShips = initializeNumberOfShips();
+        this.exitButton = "q";
     }
 
     private HashMap<String, List<String>> initializeOptions() {
@@ -23,6 +25,7 @@ public class Configuration {
         optionsMap.put("Menu", createMainMenuList());
         optionsMap.put("Mode", createGameModeMenu());
         optionsMap.put("Level", createGameLevelMenu());
+        optionsMap.put("Orientation", createOrientationMenu());
         return optionsMap;
     }
 
@@ -47,6 +50,13 @@ public class Configuration {
         menuList.add("Easy");
         menuList.add("Medium");
         menuList.add("Hard");
+        return menuList;
+    }
+
+    private List<String> createOrientationMenu() {
+        ArrayList<String> menuList = new ArrayList<>();
+        menuList.add("Horizontal");
+        menuList.add("Vartical");
         return menuList;
     }
 
