@@ -20,9 +20,9 @@ public class Battleship {
     private boolean isRunning;
 
 
-    public Battleship() {
-        display = new Display();
-        input = new Input();
+    public Battleship(Display display, Input input) {
+        this.display = display;
+        this.input = input;
         this.isRunning = true;
     }
 
@@ -37,7 +37,6 @@ public class Battleship {
             } catch (Exception e) {
                 System.out.println("game not started yet");
                 System.out.println(e);
-
             }
 
             display.printMenu();

@@ -1,17 +1,23 @@
 package com.codecool.view;
 
 import com.codecool.board.Coordinates;
+import com.codecool.game.Game;
 import com.codecool.ship.Orientation;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Scanner;
 
 public class Input {
 
+    private HashMap<String, List<String>> options;
     private Scanner scanner;
     private Display display;
 
-    public Input() {
+    public Input(Display display) {
         scanner = new Scanner(System.in);
+        this.display = display;
     }
 
     public String getInputString() {
@@ -27,6 +33,11 @@ public class Input {
 
     public Orientation getOrientation() {
         return null;
+    }
+
+    // this method is for returnn
+    public Game getGame() {
+        return new Game();
     }
 
     public Coordinates getCoordinates() {
