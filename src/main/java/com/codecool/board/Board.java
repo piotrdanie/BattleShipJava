@@ -26,6 +26,13 @@ public class Board {
     private void initializeOcean() {
         for (int row = 0; row < size; row++) {
             for (int col = 0; col < size; col++) {
+//                Coordinates coordinates = new Coordinates(row,col);
+//                if (!isPlacementOk(coordinates)){
+//                    ocean[row][col] = new Square(SquareStatus.EMPTY);
+//                }
+//                else {
+//                    ocean[row][col] = new Square(SquareStatus.SHIP);
+//                }
                 ocean[row][col] = new Square(SquareStatus.EMPTY);
             }
         }

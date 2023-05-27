@@ -5,6 +5,7 @@ import com.codecool.board.Coordinates;
 import com.codecool.player.PlayerLevel;
 import com.codecool.game.GameMode;
 import com.codecool.ship.Orientation;
+import com.codecool.ship.ShipType;
 
 import java.util.HashMap;
 import java.util.InputMismatchException;
@@ -56,6 +57,23 @@ public class Input {
         display.printMessage("Enter coordinates: ");
         String inputCoordinates = scanner.next();
         return crateCoordinate(inputCoordinates);
+    }
+    public ShipType getShipType(){
+        int option = getOption("ShipType");
+        switch (option) {
+            case 1:
+                return ShipType.BATTLESHIP;
+            case 2:
+                return ShipType.CARRIER;
+            case 3:
+                return ShipType.CRUISER;
+            case 4:
+                return ShipType.DESTROYER;
+            case 5:
+                return ShipType.SUBMARINE;
+            default:
+                return null;
+        }
     }
 
     public GameMode getGameMode() {

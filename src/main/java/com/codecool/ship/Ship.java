@@ -13,8 +13,10 @@ public class Ship {
     private Orientation orientation;
 
 
-    public Ship(List<Square> squares, ShipType shipType) {
+    public Ship(List<Square> squares, ShipType shipType, Coordinates startingCoordinates, Orientation orientation) {
         this.squares = squares;
         this.shipType = shipType;
+        this.startingCoordinates = startingCoordinates;
+        this.orientation = orientation;
     }
 }

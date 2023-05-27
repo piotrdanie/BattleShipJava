@@ -38,7 +38,7 @@ public class HumanPlayer extends Player {
         return null;
     }
 
-    public String getName() {
-        return name;
-    }
+//    public String getName() {
+//        return name;
+//    }
 }
