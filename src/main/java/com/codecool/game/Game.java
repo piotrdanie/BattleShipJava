@@ -1,14 +1,10 @@
 package com.codecool.game;
 
 import com.codecool.CustomConfiguration;
-import com.codecool.board.Board;
-import com.codecool.exceptions.DrawException;
 import com.codecool.player.Player;
-import com.codecool.player.PlayerFactory;
 import com.codecool.view.Display;
 import com.codecool.view.Input;
 
-import java.util.List;
 
 public abstract class Game {
 

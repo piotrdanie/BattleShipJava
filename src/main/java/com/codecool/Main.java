@@ -1,6 +1,5 @@
 package com.codecool;
 
-import com.codecool.exceptions.ExitException;
 import com.codecool.view.Display;
 import com.codecool.view.Input;
 
