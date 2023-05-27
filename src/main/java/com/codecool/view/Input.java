@@ -2,9 +2,7 @@ package com.codecool.view;
 
 import com.codecool.CustomConfiguration;
 import com.codecool.board.Coordinates;
-import com.codecool.exceptions.ExitException;
-import com.codecool.game.GameFactory;
-import com.codecool.game.GameLevel;
+import com.codecool.player.PlayerLevel;
 import com.codecool.game.GameMode;
 import com.codecool.ship.Orientation;
 
@@ -60,15 +58,15 @@ public class Input {
         }
     }
 
-    public GameLevel getGameLevel() {
+    public PlayerLevel getGameLevel() {
         int option = getOption("Level");
         switch (option) {
             case 1:
-                return GameLevel.EASY;
+                return PlayerLevel.EASY;
             case 2:
-                return GameLevel.MEDIUM;
+                return PlayerLevel.MEDIUM;
             case 3:
-                return GameLevel.HARD;
+                return PlayerLevel.HARD;
             default:
                 return null;
         }
@@ -98,7 +96,7 @@ public class Input {
         }
     }
 
-    private void exitGame() {
+    public void exitGame() {
         display.printExitMessage();
         System.exit(0); // Exit with status code 0 (normal exit)
     }

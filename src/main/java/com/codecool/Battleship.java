@@ -2,30 +2,27 @@ package com.codecool;
 
 import com.codecool.game.Game;
 import com.codecool.game.GameFactory;
-import com.codecool.game.GameLevel;
 import com.codecool.game.GameMode;
-import com.codecool.exceptions.ExitException;
 import com.codecool.view.Display;
 import com.codecool.view.Input;
 
-import java.util.InputMismatchException;
 
 public class Battleship {
 
     private Display display;
     private Input input;
     private Game game;
-    private boolean isRunning;
+    private CustomConfiguration configuration;
 
 
-    public Battleship(Display display, Input input) {
+    public Battleship(Display display, Input input, CustomConfiguration configuration) {
         this.display = display;
         this.input = input;
-        this.isRunning = true;
+        this.configuration = configuration;
     }
 
 
-    public void startApp() throws ExitException {
+    public void startApp() {
         while (true) {
             int option = input.getMainMenuOption();
             switch (option) {
@@ -36,14 +33,14 @@ public class Battleship {
                     // TODO print hall of fame
                     break;
                 case 3:
-                    throw new ExitException();
+                    input.exitGame();
             }
         }
     }
 
-    private Game createGame() throws ExitException {
+    private Game createGame() {
         GameMode gameMode = input.getGameMode();
-        return GameFactory.createGame(gameMode, input);
+        return GameFactory.createGame(gameMode, input, display, configuration);
     }
 
 
