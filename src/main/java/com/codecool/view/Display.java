@@ -55,7 +55,7 @@ public class Display {
     }
 
     public void printMessage(String message) {
-        System.out.print(message);
+        System.out.println(message);
     }
 
 

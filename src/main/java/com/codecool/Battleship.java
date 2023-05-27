@@ -33,7 +33,7 @@ public class Battleship {
                     createGame();
                     break;
                 case 2:
-                    // TODO hall of fame
+                    // TODO print hall of fame
                     break;
                 case 3:
                     throw new ExitException();
@@ -42,9 +42,6 @@ public class Battleship {
     }
 
     private Game createGame() throws ExitException {
-
-        // TODO create new players
-        // ask for game mode and for player
         GameMode gameMode = input.getGameMode();
         return GameFactory.createGame(gameMode, input);
     }

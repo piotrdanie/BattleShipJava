@@ -74,6 +74,10 @@ public class CustomConfiguration {
         return size;
     }
 
+    public String getExitButton() {
+        return this.exitButton;
+    }
+
     public HashMap<ShipType, Integer> getNumberOfShips() {
         return numberOfShips;
     }
