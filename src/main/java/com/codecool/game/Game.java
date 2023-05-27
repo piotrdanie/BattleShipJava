@@ -10,7 +10,7 @@ public abstract class Game {
 
     private Player firstPlayer;
     private Player secondPlayer;
-    private Input input;
+    protected Input input;
     private Display display;
     private CustomConfiguration configuration;
 
@@ -29,4 +29,6 @@ public abstract class Game {
     public void startGame() {}
 
     private void playerTurn() {}
+
+
 }

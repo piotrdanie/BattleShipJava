@@ -6,6 +6,7 @@ import com.codecool.player.PlayerLevel;
 import com.codecool.game.GameMode;
 import com.codecool.ship.Orientation;
 
+import java.util.HashMap;
 import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
@@ -23,25 +24,38 @@ public class Input {
         this.configuration = configuration;
     }
 
-    public String getInputString() {
-//        Display.printMessage("Choose options (between " + min + " and " + max + "): ");
-        return scanner.next();
-    }
+//    public String getInputString() {
+////        Display.printMessage("Choose options (between " + min + " and " + max + "): ");
+//        return scanner.next();
+//    }
 
     public int getMainMenuOption() {
         int option = getOption("Menu");
         return option;
     }
 
+    public String getName(){
+        display.printMessage("Enter your Name: ");
+        String name = scanner.next();
+        return name;
+    }
+
     public Orientation getOrientation() {
-        display.printMessage("Provide orientation: ");
-        return null;
+        int option = getOption( "Orientation");
+        switch (option){
+            case 1:
+                return Orientation.HORIZONTAL;
+            case 2:
+                return Orientation.VERTICAL;
+            default:
+                return null;
+        }
     }
 
     public Coordinates getCoordinates() {
-        // TODO: pobrać koordyanety od użytkownika and change to square
-        // TODO: get String from user and convert to coordinates
-        return new Coordinates(10, 10);
+        display.printMessage("Enter coordinates: ");
+        String inputCoordinates = scanner.next();
+        return crateCoordinate(inputCoordinates);
     }
 
     public GameMode getGameMode() {
@@ -100,4 +114,35 @@ public class Input {
         display.printExitMessage();
         System.exit(0); // Exit with status code 0 (normal exit)
     }
+
+    private int[] convertCoordinateToArray(String userInput, int size) {
+        int[] indices = new int[2];
+        userInput = userInput.toUpperCase();
+        String letter = userInput.substring(0, 1);
+        int col = Integer.parseInt(userInput.substring(1))-1;
+        int row = convertStringToInteger(letter, size);
+
+        indices[0] = row;
+        indices[1] = col;
+
+        return indices;
+    }
+
+    private int convertStringToInteger(String letter, int size) {
+        HashMap<String, Integer> columnsDict = new HashMap<>();
+
+        for (int row = 0; row < size; row++) {
+            columnsDict.put(String.valueOf((char) ('A' + row)), row);
+        }
+
+        return columnsDict.get(String.valueOf(letter.charAt(0)));
+    }
+
+    private Coordinates crateCoordinate (String position){
+        int[] current = convertCoordinateToArray(position, configuration.getSize());
+        int Row = current[0];
+        int Col = current[1];
+        Coordinates coordinates = new Coordinates(Row, Col);
+        return  coordinates;
+    };
 }

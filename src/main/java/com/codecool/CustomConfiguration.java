@@ -56,7 +56,7 @@ public class CustomConfiguration{
     private List<String> createOrientationMenu() {
         ArrayList<String> menuList = new ArrayList<>();
         menuList.add("Horizontal");
-        menuList.add("Vartical");
+        menuList.add("Vertical");
         return menuList;
     }
 

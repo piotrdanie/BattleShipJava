@@ -46,7 +46,7 @@ public class Display {
     public void printBoard(Board board) {
         System.out.println("  A B C D E F G H I J");
         for (int row = 0; row < configuration.getSize(); row++) {
-            System.out.print(row + " ");
+            System.out.print(row + 1 + " ");
             for (int col = 0; col < configuration.getSize(); col++) {
                 System.out.print(board.getOcean()[row][col].getSquareStatus().getSymbol() + " ");
             }
@@ -54,8 +54,9 @@ public class Display {
         }
     }
 
-    public void printMessage(String message) {
+    public String printMessage(String message) {
         System.out.println(message);
+        return message;
     }
 
 
