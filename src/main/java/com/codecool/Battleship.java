@@ -1,6 +1,7 @@
 package com.codecool;
 
 import com.codecool.game.Game;
+import com.codecool.game.GameFactory;
 import com.codecool.game.GameLevel;
 import com.codecool.game.GameMode;
 import com.codecool.exceptions.ExitException;
@@ -40,8 +41,12 @@ public class Battleship {
         }
     }
 
-    private Game createGame() {
-        return new Game();
+    private Game createGame() throws ExitException {
+
+        // TODO create new players
+        // ask for game mode and for player
+        GameMode gameMode = input.getGameMode();
+        return GameFactory.createGame(gameMode, input);
     }
 
 

@@ -3,6 +3,7 @@ package com.codecool.view;
 import com.codecool.CustomConfiguration;
 import com.codecool.board.Coordinates;
 import com.codecool.exceptions.ExitException;
+import com.codecool.game.GameFactory;
 import com.codecool.game.GameLevel;
 import com.codecool.game.GameMode;
 import com.codecool.ship.Orientation;

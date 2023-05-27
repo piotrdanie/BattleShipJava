@@ -8,7 +8,7 @@ import com.codecool.square.SquareStatus;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class Player {
+public class HumanPlayer extends Player {
 
     // przy takiej konfiguracji w której to player ma borda ze swoimi statkami oraz z swoimi strzałami
     // jak możemy się odwoływać do borda przeciwnika żeby sprawdzić czy strzał był udany
@@ -18,7 +18,7 @@ public abstract class Player {
     private List<Ship> ships;
     private String name;
 
-    public Player() {
+    public HumanPlayer() {
         this.ships = new ArrayList<Ship>();
     }
 

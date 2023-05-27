@@ -8,7 +8,7 @@ import java.util.List;
 public class PlayerFactory {
 
     public static Player createHumanPlayer() {
-        return new Player();
+        return new HumanPlayer();
     }
 
     public static Player createPcPlayer(GameLevel gameLevel) {

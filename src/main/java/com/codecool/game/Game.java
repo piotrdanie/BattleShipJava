@@ -4,40 +4,26 @@ import com.codecool.board.Board;
 import com.codecool.exceptions.DrawException;
 import com.codecool.player.Player;
 import com.codecool.player.PlayerFactory;
+import com.codecool.view.Input;
 
 import java.util.List;
 
-public class Game {
+public abstract class Game {
 
-    private Board board;
-    private GameLevel gameLevel;
-    private GameMode gameMode;
     private Player firstPlayer;
     private Player secondPlayer;
+    private Input input;
 
 
-    public Game() {
-        this.board = new Board();
+    public Game(Input input) {
+        this.input = input;
     }
 
-    public Game(GameMode gameMode) {
-        this.gameMode = gameMode;
+    private void prepareGame() {
 
     }
 
-    public Game(GameMode gameMode, GameLevel gameLevel) {
-        this.gameMode = gameMode;
-        this.gameLevel = gameLevel;
-    }
+    public void startGame() {}
 
-    public void startGame() {
-        System.out.println("game started");
-        while (firstPlayer.isAlive() || secondPlayer.isAlive()) {
-            break;
-        }
-    }
-
-    private void playerTurn() {
-        // logic for player turn
-    }
+    private void playerTurn() {}
 }
