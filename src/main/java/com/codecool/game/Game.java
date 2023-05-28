@@ -20,15 +20,4 @@ public abstract class Game {
         this.display = display;
         this.configuration = configuration;
     }
-
-    private void prepareGame() {
-        // ask user for name and board placement of the ships if this is human player
-        // if player is PC then create random name for this player and place ships randomly
-    }
-
-    public void startGame() {}
-
-    private void playerTurn() {}
-
-
 }

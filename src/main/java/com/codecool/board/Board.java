@@ -21,7 +21,7 @@ public class Board {
 
     public Board(List<Ship> shipList){
         ocean = new Square[size][size];
-        initializeOcean(List<Ship> shipList);
+        initializeOcean(shipList);
     }
 
     public boolean isPlacementOk(Coordinates coordinates) {

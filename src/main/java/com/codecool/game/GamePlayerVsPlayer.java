@@ -1,8 +1,10 @@
 package com.codecool.game;
 
 import com.codecool.CustomConfiguration;
+import com.codecool.board.Board;
 import com.codecool.player.HumanPlayer;
 import com.codecool.player.Player;
+import com.codecool.player.PlayerFactory;
 import com.codecool.view.Display;
 import com.codecool.view.Input;
 
@@ -10,22 +12,23 @@ import java.util.List;
 
 public class GamePlayerVsPlayer extends Game{
 
-    private Player firstPlayer;
-
     public GamePlayerVsPlayer(Input input, Display display, CustomConfiguration configuration) {
         super(input, display, configuration);
+        prepareGame();
     }
 
-    // ask about abstract classes and why cannot see method;
-    // game and player, PLayer and HumanPlayer.
     public void prepareGame() {
-        // ask user for name and board placement of the ships if this is human player
-        firstPlayer = createHumanPlayer();
-        firstPlayer.createShipsList();
+        firstPlayer = createPlayer();
+        secondPlayer = createPlayer();
     }
-    private HumanPlayer createHumanPlayer(){
+
+    private Player createPlayer(){
         String name = input.getName();
-        return new HumanPlayer(name);
+        Player player = PlayerFactory.createHumanPlayer(input, name);
+        player.createShipsList();
+        Board playerCheckingBoard = new Board(player.getShips());
+        player.setCheckingBoard(playerCheckingBoard);
+        return player;
     }
 
 

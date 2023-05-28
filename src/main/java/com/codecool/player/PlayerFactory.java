@@ -1,9 +1,11 @@
 package com.codecool.player;
 
+import com.codecool.view.Input;
+
 public class PlayerFactory {
 
-    public static Player createHumanPlayer() {
-        return new HumanPlayer("name");
+    public static Player createHumanPlayer(Input input, String name) {
+        return new HumanPlayer(name, input);
     }
 
     public static Player createPcPlayer(PlayerLevel playerLevel) {

@@ -6,6 +6,7 @@ import com.codecool.board.Coordinates;
 import com.codecool.ship.Ship;
 import com.codecool.ship.ShipType;
 import com.codecool.square.SquareStatus;
+import com.codecool.view.Input;
 
 import java.lang.module.Configuration;
 import java.util.ArrayList;
@@ -15,17 +16,18 @@ import java.util.Map;
 
 public class HumanPlayer extends Player {
 
-    // przy takiej konfiguracji w której to player ma borda ze swoimi statkami oraz z swoimi strzałami
-    // jak możemy się odwoływać do borda przeciwnika żeby sprawdzić czy strzał był udany
-    // podejrzewam że musi to być zaimplementowane w logice game już.
+
     private Board shootingBoard;
     private Board checkingBoard;
     private List<Ship> ships;
     private String name;
+    private Input input;
 
 
-    public HumanPlayer(String name) {
+    public HumanPlayer(String name, Input input) {
+        super();
         this.name = name;
+        this.input = input;
     }
 
     public boolean isAlive() {
@@ -55,6 +57,20 @@ public class HumanPlayer extends Player {
             }
         }
         return playerShips;
+    }
+
+    public List<Ship> getShips() {
+        return ships;
+    }
+
+    @Override
+    public void setCheckingBoard(Board checkingBoard) {
+        this.checkingBoard = checkingBoard;
+    }
+
+    @Override
+    public String getName() {
+        return this.name;
     }
 
 

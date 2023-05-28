@@ -17,6 +17,7 @@ public class Input {
     private Scanner scanner;
     private Display display;
     private CustomConfiguration configuration;
+    private Input instance;
 
 
     public Input(Display display, CustomConfiguration configuration) {
