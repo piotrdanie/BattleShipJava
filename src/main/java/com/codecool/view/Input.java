@@ -26,24 +26,33 @@ public class Input {
         this.configuration = configuration;
     }
 
-//    public String getInputString() {
-////        Display.printMessage("Choose options (between " + min + " and " + max + "): ");
-//        return scanner.next();
-//    }
+    public ArrayList<Ship> createShipsList(){
+        ArrayList<Ship> playerShips = new ArrayList<>();
+        HashMap<ShipType, Integer> numberOfShips = CustomConfiguration.getInstance().getNumberOfShips();
+        for(Map.Entry<ShipType, Integer> set : numberOfShips.entrySet()) {
+            for (int i = 0; i <= set.getValue(); i++) {
 
-//    public Ship getUserShip() {
-//
-//        // get starting coordinates from user
-//
-//        // get orientation of the ship from user
-//        Orientation shipOrientation = getOrientation();
-//
-//        // validate the shipOrientation
-//
-//        return new Ship();
-//    }
+                Ship actualShip = createShipFromUserInput(set.getKey());
+                playerShips.add(actualShip);
+            }
+        }
+        return playerShips;
+    }
 
-    public Ship createShipFromUserInput(ShipType shipType) {
+    private boolean validateShipPlacement(Ship ship, List<Ship> ships) {
+        for (Ship shipInList : ships) {
+            for (Square square : shipInList.getSquares()) {
+                for (Square actualSquare : ship.getSquares()) {
+                    if (actualSquare.equals(square)) {
+                        return false;
+                    }
+                }
+            }
+        }
+        return true;
+    }
+
+    private Ship createShipFromUserInput(ShipType shipType) {
 
         display.printMessage("Please provide the data for placing the: " + shipType);
 
@@ -67,7 +76,8 @@ public class Input {
         }
 
         // TODO validate the placement of the ship so you
-        //  cannot place in position that is already ocuppied
+        //  cannot place in position that is already occupied
+        //  in order to check that we need to have access to the list of ships
 
 
 

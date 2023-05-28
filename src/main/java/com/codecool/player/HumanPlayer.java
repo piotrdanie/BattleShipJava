@@ -46,19 +46,6 @@ public class HumanPlayer extends Player {
         return null;
     }
 
-    public ArrayList<Ship> createShipsList(){
-        ArrayList<Ship> playerShips = new ArrayList<>();
-        HashMap<ShipType, Integer> numberOfShips = CustomConfiguration.getInstance().getNumberOfShips();
-        for(Map.Entry<ShipType, Integer> set : numberOfShips.entrySet()) {
-            for (int i = 0; i <= set.getValue(); i++) {
-
-                Ship actualShip = input.createShipFromUserInput(set.getKey());
-                playerShips.add(actualShip);
-            }
-        }
-        return playerShips;
-    }
-
     public List<Ship> getShips() {
         return ships;
     }
