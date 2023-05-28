@@ -15,7 +15,9 @@ import com.codecool.view.Input;
 
 import java.lang.module.Configuration;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class GamePlayerVsPlayer extends Game{
 
@@ -39,7 +41,7 @@ public class GamePlayerVsPlayer extends Game{
     // umieść go na checkingBoard ??
     // dodaj do lity statków
     private ArrayList<Ship> createPlayerShips() {
-        int numberOfShips = 5;
+
         ArrayList<Ship> playerShips = new ArrayList<>();
         while (numberOfShips != 0) {
             Ship ship = creatNewShip();
@@ -48,11 +50,63 @@ public class GamePlayerVsPlayer extends Game{
         }
         return playerShips;
     }
+
     private Ship creatNewShip(){
-        Square square = new Square(SquareStatus.SHIP);
-        ShipType shipType = input.getShipType();
-        Coordinates coordinates = input.getCoordinates();
-        Orientation orientation = input.getOrientation();
-        return new Ship((List<Square>) square,shipType,coordinates,orientation);
+        HashMap<ShipType, Integer> numberOfShips = configuration.getNumberOfShips();
+        for(Map.Entry<ShipType, Integer> set : numberOfShips.entrySet()) {
+            for (int i = 0; i <= set.getValue(); i++) {
+
+                // create ship of particular type
+                ShipType shipType = set.getKey();
+
+                // ask for coordinates
+                Coordinates startCoordinates = input.getCoordinates();
+
+                // ask for orientation
+                Orientation orientation = input.getOrientation();
+
+                // check the size of the ship
+                int shipSize = shipType.getSize();
+
+
+                // validate the placement of the ship
+                if (startCoordinates.getY() + shipSize < configuration.getSize() ||
+                    startCoordinates.getX() + shipSize < configuration.getSize()) {
+                    // TODO return to while loop and ask again for the coordinates
+                    // create ship
+                    // new method for creating the ships
+                } else {
+                    // ask user again for the input
+                }
+
+                // calculate Coordinates of the rest squares
+                Square firstSquare = new Square(SquareStatus.SHIP, startCoordinates);
+
+                // create list od squares
+                List<Square> shipSquares = new ArrayList<>();
+                shipSquares.add(firstSquare);
+
+                // calculate and create the rest of the squares
+                for (int l = 0; l < shipSize; l++) {
+                    if (orientation.equals(Orientation.HORIZONTAL)) {
+                        Coordinates actualCoordinates = new Coordinates(
+                                startCoordinates.getX() +1,
+                                startCoordinates.getY()
+                        );
+                        Square actualSquare = new Square(SquareStatus.SHIP, actualCoordinates);
+                        shipSquares.add(actualSquare);
+                    } else if (orientation.equals(Orientation.VERTICAL)) {
+                        Coordinates actualCoordinates = new Coordinates(
+                                startCoordinates.getX(),
+                                startCoordinates.getY() + 1
+                        );
+                        Square actualSquare = new Square(SquareStatus.SHIP, actualCoordinates);
+                        shipSquares.add(actualSquare);
+                    }
+                }
+
+
+            }
+        }
     }
 }

@@ -12,7 +12,7 @@ public abstract class Game {
     private Player secondPlayer;
     protected Input input;
     private Display display;
-    private CustomConfiguration configuration;
+    protected CustomConfiguration configuration;
 
 
     public Game(Input input, Display display, CustomConfiguration configuration) {

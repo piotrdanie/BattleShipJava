@@ -9,16 +9,16 @@ import java.util.List;
 public class CustomConfiguration{
 
     private HashMap<String, List<String>> listOptions;
-//    private HashMap<ShipType, Integer> numberOfShips;
+    private HashMap<ShipType, Integer> numberOfShips;
     private String exitButton;
     private int size;
-    private int numberOfShips;
+//    private int numberOfShips;
 
     public CustomConfiguration() {
         this.listOptions = initializeOptions();
         this.size = 10;
-        this.numberOfShips = 5;
-//        this.numberOfShips = initializeNumberOfShips();
+//        this.numberOfShips = 5;
+        this.numberOfShips = initializeNumberOfShips();
         this.exitButton = "q";
     }
 
@@ -63,15 +63,15 @@ public class CustomConfiguration{
         return menuList;
     }
 
-//    private HashMap<ShipType, Integer> initializeNumberOfShips() {
-//        HashMap<ShipType, Integer> mapNumberOfShips = new HashMap<>();
-//        mapNumberOfShips.put(ShipType.BATTLESHIP, 1);
-//        mapNumberOfShips.put(ShipType.CARRIER, 1);
-//        mapNumberOfShips.put(ShipType.CRUISER, 1);
-//        mapNumberOfShips.put(ShipType.DESTROYER, 1);
-//        mapNumberOfShips.put(ShipType.SUBMARINE, 1);
-//        return mapNumberOfShips;
-//    }
+    private HashMap<ShipType, Integer> initializeNumberOfShips() {
+        HashMap<ShipType, Integer> mapNumberOfShips = new HashMap<>();
+        mapNumberOfShips.put(ShipType.BATTLESHIP, 1);
+        mapNumberOfShips.put(ShipType.CARRIER, 1);
+        mapNumberOfShips.put(ShipType.CRUISER, 1);
+        mapNumberOfShips.put(ShipType.DESTROYER, 1);
+        mapNumberOfShips.put(ShipType.SUBMARINE, 1);
+        return mapNumberOfShips;
+    }
     private List<String> createShipTypeMenu() {
         ArrayList<String> shipTypeMenu = new ArrayList<>();
         shipTypeMenu.add("BATTLESHIP");
@@ -90,9 +90,9 @@ public class CustomConfiguration{
         return this.exitButton;
     }
 
-//    public HashMap<ShipType, Integer> getNumberOfShips() {
-//        return numberOfShips;
-//    }
+    public HashMap<ShipType, Integer> getNumberOfShips() {
+        return numberOfShips;
+    }
 
     public HashMap<String, List<String>> getListOptions() {
         return listOptions;

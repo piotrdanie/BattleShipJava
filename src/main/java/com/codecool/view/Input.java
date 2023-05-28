@@ -5,6 +5,7 @@ import com.codecool.board.Coordinates;
 import com.codecool.player.PlayerLevel;
 import com.codecool.game.GameMode;
 import com.codecool.ship.Orientation;
+import com.codecool.ship.Ship;
 import com.codecool.ship.ShipType;
 
 import java.util.HashMap;
@@ -29,6 +30,19 @@ public class Input {
 ////        Display.printMessage("Choose options (between " + min + " and " + max + "): ");
 //        return scanner.next();
 //    }
+
+    public Ship getUserShip() {
+
+        // get starting coordinates from user
+
+        // get orientation of the ship from user
+        Orientation shipOrientation = getOrientation();
+
+        // validate the shipOrientation
+
+        return new Ship();
+    }
+
 
     public int getMainMenuOption() {
         int option = getOption("Menu");
