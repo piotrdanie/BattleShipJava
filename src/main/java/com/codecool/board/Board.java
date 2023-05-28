@@ -1,5 +1,6 @@
 package com.codecool.board;
 
+import com.codecool.ship.Ship;
 import com.codecool.square.Square;
 import com.codecool.square.SquareStatus;
 
@@ -14,6 +15,10 @@ public class Board {
         initializeOcean();
     }
 
+    public Board(List<Ship> shipList){
+
+    }
+
     public boolean isPlacementOk(Coordinates coordinates) {
         return (ocean[coordinates.getX()][coordinates.getY()].getSquareStatus().equals(SquareStatus.EMPTY));
     }
@@ -26,14 +31,10 @@ public class Board {
     private void initializeOcean() {
         for (int row = 0; row < size; row++) {
             for (int col = 0; col < size; col++) {
-//                Coordinates coordinates = new Coordinates(row,col);
-//                if (!isPlacementOk(coordinates)){
-//                    ocean[row][col] = new Square(SquareStatus.EMPTY);
-//                }
-//                else {
-//                    ocean[row][col] = new Square(SquareStatus.SHIP);
-//                }
-                ocean[row][col] = new Square(SquareStatus.EMPTY);
+
+                Coordinates coordinates = new Coordinates(row,col);
+                ocean[row][col] = new Square(SquareStatus.EMPTY, coordinates);
+
             }
         }
     }

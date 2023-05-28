@@ -8,8 +8,8 @@ import com.codecool.view.Input;
 
 public abstract class Game {
 
-    private Player firstPlayer;
-    private Player secondPlayer;
+    protected Player firstPlayer;
+    protected Player secondPlayer;
     protected Input input;
     private Display display;
     protected CustomConfiguration configuration;

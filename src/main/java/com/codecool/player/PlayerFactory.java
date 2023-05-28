@@ -3,7 +3,7 @@ package com.codecool.player;
 public class PlayerFactory {
 
     public static Player createHumanPlayer() {
-        return new HumanPlayer();
+        return new HumanPlayer("name");
     }
 
     public static Player createPcPlayer(PlayerLevel playerLevel) {
