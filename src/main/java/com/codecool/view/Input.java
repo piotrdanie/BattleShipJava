@@ -52,6 +52,14 @@ public class Input {
         return true;
     }
 
+    private boolean validateShipOutsideBoard(Coordinates startCoordinates, int shipSize) {
+        if (startCoordinates.getY() + shipSize < configuration.getSize() ||
+                startCoordinates.getX() + shipSize < configuration.getSize()) {
+            return true;
+        }
+        return false;
+    }
+
     private Ship createShipFromUserInput(ShipType shipType) {
 
         display.printMessage("Please provide the data for placing the: " + shipType);
@@ -64,29 +72,11 @@ public class Input {
         int shipSize = shipType.getSize();
 
 
-        // validate the placement of the ship so user cannot choose
-        // coordinates that ships will be placed outside the board
-        if (startCoordinates.getY() + shipSize < configuration.getSize() ||
-                startCoordinates.getX() + shipSize < configuration.getSize()) {
-            // TODO return to while loop and ask again for the coordinates
-            // create ship
-            // new method for creating the ships
-        } else {
-            // ask user again for the input
-        }
-
-        // TODO validate the placement of the ship so you
-        //  cannot place in position that is already occupied
-        //  in order to check that we need to have access to the list of ships
-
-
-
         // calculate Coordinates of the rest squares
         Square firstSquare = new Square(SquareStatus.SHIP, startCoordinates);
 
         // create list od squares
         List<Square> shipSquares = new ArrayList<>();
-        shipSquares.add(firstSquare);
 
         // calculate and create the rest of the squares
         for (int l = 0; l < shipSize; l++) {
@@ -94,13 +84,13 @@ public class Input {
 
             switch (orientation) {
                 case HORIZONTAL:
-                    actualCoordinates = new Coordinates(startCoordinates.getX() +1, startCoordinates.getY());
+                    actualCoordinates = new Coordinates(startCoordinates.getX() +l, startCoordinates.getY());
                     break;
                 case VERTICAL:
-                    actualCoordinates = new Coordinates(startCoordinates.getX(), startCoordinates.getY() + 1);
+                    actualCoordinates = new Coordinates(startCoordinates.getX(), startCoordinates.getY() + l);
                     break;
                 default:
-                    actualCoordinates = new Coordinates(startCoordinates.getX(), startCoordinates.getY() + 1);
+                    actualCoordinates = new Coordinates(startCoordinates.getX(), startCoordinates.getY() + l);
                     break;
             }
             Square actualSquare = new Square(SquareStatus.SHIP, actualCoordinates);
