@@ -1,5 +1,6 @@
 package com.codecool.player;
 
+import com.codecool.CustomConfiguration;
 import com.codecool.board.Board;
 import com.codecool.board.Coordinates;
 import com.codecool.ship.Ship;
@@ -45,7 +46,7 @@ public class HumanPlayer extends Player {
 
     public ArrayList<Ship> createShipsList(){
         ArrayList<Ship> playerShips = new ArrayList<>();
-        HashMap<ShipType, Integer> numberOfShips = configuration.getNumberOfShips();
+        HashMap<ShipType, Integer> numberOfShips = CustomConfiguration.getInstance().getNumberOfShips();
         for(Map.Entry<ShipType, Integer> set : numberOfShips.entrySet()) {
             for (int i = 0; i <= set.getValue(); i++) {
 

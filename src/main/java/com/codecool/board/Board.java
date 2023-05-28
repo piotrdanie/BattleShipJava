@@ -4,6 +4,8 @@ import com.codecool.ship.Ship;
 import com.codecool.square.Square;
 import com.codecool.square.SquareStatus;
 
+import java.util.List;
+
 public class Board {
 
     private int size = 10;

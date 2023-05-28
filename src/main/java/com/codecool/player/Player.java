@@ -16,28 +16,25 @@ public abstract class Player {
     private Board checkingBoard;
     private List<Ship> ships;
     private String name;
-    protected CustomConfiguration configuration;
-    protected Input input;
+    private CustomConfiguration configuration;
+    private Input input;
 
-    public Player() {
-        this.ships = new ArrayList<Ship>();
+    public Player(Board shootingBoard, Board checkingBoard, List<Ship> ships, String name, Input input) {
+        this.shootingBoard = shootingBoard;
+        this.checkingBoard = checkingBoard;
+        this.ships = ships;
+        this.name = name;
+        this.input = input;
     }
 
-    public boolean isAlive() {
-        return ships.size() == 0;
-    }
 
-    public  Coordinates shoot() {
-        return new Coordinates(10, 10);
-    }
+    public abstract boolean isAlive();
 
-    public SquareStatus responseToShoot(Coordinates coordinates) {
-        return null;
-    }
+    public abstract  Coordinates shoot();
 
-    public ArrayList<Ship> createShipsList(){}
+    public abstract SquareStatus responseToShoot(Coordinates coordinates);
 
-    public String getName() {
-        return name;
-    }
+    public abstract ArrayList<Ship> createShipsList();
+
+    public abstract String getName();
 }

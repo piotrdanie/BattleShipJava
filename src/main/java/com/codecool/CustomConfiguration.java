@@ -2,17 +2,26 @@ package com.codecool;
 
 import com.codecool.ship.ShipType;
 
+import javax.swing.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
 public class CustomConfiguration{
 
+    private static CustomConfiguration instance;
     private HashMap<String, List<String>> listOptions;
     private HashMap<ShipType, Integer> numberOfShips;
     private String exitButton;
     private int size;
 //    private int numberOfShips;
+
+    public static CustomConfiguration getInstance() {
+        if (instance == null) {
+            instance = new CustomConfiguration();
+        }
+        return instance;
+    }
 
     public CustomConfiguration() {
         this.listOptions = initializeOptions();
