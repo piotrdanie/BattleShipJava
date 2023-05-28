@@ -45,17 +45,18 @@ public class Input {
 
     public Ship createShipFromUserInput(ShipType shipType) {
 
+        display.printMessage("Please provide the data for placing the: " + shipType);
+
         // ask for coordinates
         Coordinates startCoordinates = getCoordinates();
-
         // ask for orientation
         Orientation orientation = getOrientation();
-
-        // check the size of the ship
+        // get the size of the ship
         int shipSize = shipType.getSize();
 
 
-        // validate the placement of the ship
+        // validate the placement of the ship so user cannot choose
+        // coordinates that ships will be placed outside the board
         if (startCoordinates.getY() + shipSize < configuration.getSize() ||
                 startCoordinates.getX() + shipSize < configuration.getSize()) {
             // TODO return to while loop and ask again for the coordinates
@@ -64,6 +65,11 @@ public class Input {
         } else {
             // ask user again for the input
         }
+
+        // TODO validate the placement of the ship so you
+        //  cannot place in position that is already ocuppied
+
+
 
         // calculate Coordinates of the rest squares
         Square firstSquare = new Square(SquareStatus.SHIP, startCoordinates);
