@@ -15,4 +15,8 @@ public class Ship {
         this.squares = squares;
         this.shipType = shipType;
     }
+
+    public List<Square> getSquares() {
+        return squares;
+    }
 }

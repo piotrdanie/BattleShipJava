@@ -17,6 +17,8 @@ public class Square {
         return squareStatus;
     }
 
+    public Coordinates getCoordinates(){return coordinates;}
+
     public void setSquareStatus(SquareStatus squareStatus) {
     }
 }

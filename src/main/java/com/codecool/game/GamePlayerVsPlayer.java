@@ -6,6 +6,8 @@ import com.codecool.player.Player;
 import com.codecool.view.Display;
 import com.codecool.view.Input;
 
+import java.util.List;
+
 public class GamePlayerVsPlayer extends Game{
 
     private Player firstPlayer;
