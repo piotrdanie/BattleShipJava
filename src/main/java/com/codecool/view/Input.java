@@ -90,21 +90,21 @@ public class Input {
 
         // calculate and create the rest of the squares
         for (int l = 0; l < shipSize; l++) {
-            if (orientation.equals(Orientation.HORIZONTAL)) {
-                Coordinates actualCoordinates = new Coordinates(
-                        startCoordinates.getX() +1,
-                        startCoordinates.getY()
-                );
-                Square actualSquare = new Square(SquareStatus.SHIP, actualCoordinates);
-                shipSquares.add(actualSquare);
-            } else if (orientation.equals(Orientation.VERTICAL)) {
-                Coordinates actualCoordinates = new Coordinates(
-                        startCoordinates.getX(),
-                        startCoordinates.getY() + 1
-                );
-                Square actualSquare = new Square(SquareStatus.SHIP, actualCoordinates);
-                shipSquares.add(actualSquare);
+            Coordinates actualCoordinates;
+
+            switch (orientation) {
+                case HORIZONTAL:
+                    actualCoordinates = new Coordinates(startCoordinates.getX() +1, startCoordinates.getY());
+                    break;
+                case VERTICAL:
+                    actualCoordinates = new Coordinates(startCoordinates.getX(), startCoordinates.getY() + 1);
+                    break;
+                default:
+                    actualCoordinates = new Coordinates(startCoordinates.getX(), startCoordinates.getY() + 1);
+                    break;
             }
+            Square actualSquare = new Square(SquareStatus.SHIP, actualCoordinates);
+            shipSquares.add(actualSquare);
         }
         return new Ship(shipSquares, shipType);
     }
