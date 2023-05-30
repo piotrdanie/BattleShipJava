@@ -100,7 +100,6 @@ public class Input {
     }
 
 
-
     public int getMainMenuOption() {
         int option = getOption("Menu");
         return option;
@@ -188,7 +187,6 @@ public class Input {
             } catch (InputMismatchException e) {
                 checkExit();
             }
-
         }
     }
 

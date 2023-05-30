@@ -25,4 +25,6 @@ public abstract class Player {
     public abstract List<Ship> getShips();
 
     public abstract void setCheckingBoard(Board checkingBoard);
+
+    public abstract Player createPlayer();
 }

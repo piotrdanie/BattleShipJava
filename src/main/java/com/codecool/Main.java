@@ -12,6 +12,5 @@ public class Main {
         Battleship battleship = new Battleship(display, input, configuration);
 
         battleship.startApp();
-
     }
 }

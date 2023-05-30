@@ -17,18 +17,20 @@ public class GamePlayerVsPlayer extends Game{
         prepareGame();
     }
 
+    @Override
     public void prepareGame() {
         firstPlayer = createPlayer();
         secondPlayer = createPlayer();
     }
 
     private Player createPlayer(){
-        String name = input.getName();
-        Player player = PlayerFactory.createHumanPlayer(input, name);
-        player.createShipsList();
-        Board playerCheckingBoard = new Board(player.getShips());
-        player.setCheckingBoard(playerCheckingBoard);
-        return player;
+        return new HumanPlayer();
+//        String name = input.getName();
+//        Player player = PlayerFactory.createHumanPlayer(input, name);
+//        player.createShipsList();
+//        Board playerCheckingBoard = new Board(player.getShips());
+//        player.setCheckingBoard(playerCheckingBoard);
+//        return player;
     }
 
 

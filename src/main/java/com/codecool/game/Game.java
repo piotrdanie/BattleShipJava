@@ -20,4 +20,6 @@ public abstract class Game {
         this.display = display;
         this.configuration = configuration;
     }
+
+    public abstract void prepareGame();
 }
