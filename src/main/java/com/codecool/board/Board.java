@@ -11,7 +11,8 @@ public class Board {
     private int size = 10;
     private Square[][] ocean;
 
-    private List<Ship> shipList;
+    // board shouldn't have the shipList, this is property of the player
+//    private List<Ship> shipList;
 
 
     public Board() {

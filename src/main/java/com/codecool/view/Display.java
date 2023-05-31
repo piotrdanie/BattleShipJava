@@ -7,11 +7,18 @@ import java.util.List;
 
 public class Display {
 
-    private CustomConfiguration configuration;
+
+    private static Display instance;
+
+    public static Display getInstance() {
+        if (instance == null) {
+            instance = new Display();
+        }
+        return instance;
+    }
 
 
-    public Display(CustomConfiguration configuration) {
-        this.configuration = configuration;
+    public Display() {
     }
 
 
@@ -45,9 +52,9 @@ public class Display {
 
     public void printBoard(Board board) {
         System.out.println("  A B C D E F G H I J");
-        for (int row = 0; row < configuration.getSize(); row++) {
+        for (int row = 0; row < CustomConfiguration.getInstance().getSize(); row++) {
             System.out.print(row + 1 + " ");
-            for (int col = 0; col < configuration.getSize(); col++) {
+            for (int col = 0; col < CustomConfiguration.getInstance().getSize(); col++) {
                 System.out.print(board.getOcean()[row][col].getSquareStatus().getSymbol() + " ");
             }
             System.out.println();

@@ -14,7 +14,7 @@ public class CustomConfiguration{
     private HashMap<ShipType, Integer> numberOfShips;
     private String exitButton;
     private int size;
-//    private int numberOfShips;
+
 
     public static CustomConfiguration getInstance() {
         if (instance == null) {

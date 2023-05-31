@@ -10,95 +10,24 @@ import com.codecool.ship.ShipType;
 import com.codecool.square.Square;
 import com.codecool.square.SquareStatus;
 
+import java.lang.module.Configuration;
 import java.util.*;
 
 public class Input {
 
     private Scanner scanner;
-    private Display display;
-    private CustomConfiguration configuration;
-    private Input instance;
+    private static Input instance;
 
+    public static Input getInstance() {
+        if (instance == null) {
+            instance = new Input();
+        }
+        return instance;
+    }
 
-    public Input(Display display, CustomConfiguration configuration) {
+    public Input() {
         scanner = new Scanner(System.in);
-        this.display = display;
-        this.configuration = configuration;
     }
-
-    public ArrayList<Ship> createShipsList(){
-        ArrayList<Ship> playerShips = new ArrayList<>();
-        HashMap<ShipType, Integer> numberOfShips = CustomConfiguration.getInstance().getNumberOfShips();
-        for(Map.Entry<ShipType, Integer> set : numberOfShips.entrySet()) {
-            for (int i = 0; i <= set.getValue(); i++) {
-
-                Ship actualShip = createShipFromUserInput(set.getKey());
-                playerShips.add(actualShip);
-            }
-        }
-        return playerShips;
-    }
-
-    private boolean validateShipPlacement(Ship ship, List<Ship> ships) {
-        for (Ship shipInList : ships) {
-            for (Square square : shipInList.getSquares()) {
-                for (Square actualSquare : ship.getSquares()) {
-                    if (actualSquare.equals(square)) {
-                        return false;
-                    }
-                }
-            }
-        }
-        return true;
-    }
-
-    private boolean validateShipOutsideBoard(Coordinates startCoordinates, int shipSize) {
-        if (startCoordinates.getY() + shipSize < configuration.getSize() ||
-                startCoordinates.getX() + shipSize < configuration.getSize()) {
-            return true;
-        }
-        return false;
-    }
-
-    private Ship createShipFromUserInput(ShipType shipType) {
-
-        display.printMessage("Please provide the data for placing the: " + shipType);
-
-        // ask for coordinates
-        Coordinates startCoordinates = getCoordinates();
-        // ask for orientation
-        Orientation orientation = getOrientation();
-        // get the size of the ship
-        int shipSize = shipType.getSize();
-
-
-        // calculate Coordinates of the rest squares
-        Square firstSquare = new Square(SquareStatus.SHIP, startCoordinates);
-
-        // create list od squares
-        List<Square> shipSquares = new ArrayList<>();
-
-        // calculate and create the rest of the squares
-        for (int l = 0; l < shipSize; l++) {
-            Coordinates actualCoordinates;
-
-            switch (orientation) {
-                case HORIZONTAL:
-                    actualCoordinates = new Coordinates(startCoordinates.getX() +l, startCoordinates.getY());
-                    break;
-                case VERTICAL:
-                    actualCoordinates = new Coordinates(startCoordinates.getX(), startCoordinates.getY() + l);
-                    break;
-                default:
-                    actualCoordinates = new Coordinates(startCoordinates.getX(), startCoordinates.getY() + l);
-                    break;
-            }
-            Square actualSquare = new Square(SquareStatus.SHIP, actualCoordinates);
-            shipSquares.add(actualSquare);
-        }
-        return new Ship(shipSquares, shipType);
-    }
-
 
     public int getMainMenuOption() {
         int option = getOption("Menu");
@@ -106,7 +35,7 @@ public class Input {
     }
 
     public String getName(){
-        display.printMessage("Enter your Name: ");
+        Display.getInstance().printMessage("Enter your Name: ");
         String name = scanner.next();
         return name;
     }
@@ -124,7 +53,7 @@ public class Input {
     }
 
     public Coordinates getCoordinates() {
-        display.printMessage("Enter coordinates: ");
+        Display.getInstance().printMessage("Enter coordinates: ");
         String inputCoordinates = scanner.next();
         return crateCoordinate(inputCoordinates);
     }
@@ -176,8 +105,8 @@ public class Input {
 
     private int getOption(String key) {
         while(true) {
-            List<String> options = configuration.getListOptions().get(key);
-            display.printMenu(options);
+            List<String> options = CustomConfiguration.getInstance().getListOptions().get(key);
+            Display.getInstance().printMenu(options);
 
             try {
                 int option = scanner.nextInt();
@@ -192,13 +121,13 @@ public class Input {
 
     private void checkExit() {
         String input = scanner.next();
-        if (input.equals(configuration.getExitButton())) {
+        if (input.equals(CustomConfiguration.getInstance().getExitButton())) {
             exitGame();
         }
     }
 
     public void exitGame() {
-        display.printExitMessage();
+        Display.getInstance().printExitMessage();
         System.exit(0); // Exit with status code 0 (normal exit)
     }
 
@@ -221,12 +150,11 @@ public class Input {
         for (int row = 0; row < size; row++) {
             columnsDict.put(String.valueOf((char) ('A' + row)), row);
         }
-
         return columnsDict.get(String.valueOf(letter.charAt(0)));
     }
 
     private Coordinates crateCoordinate (String position){
-        int[] current = convertCoordinateToArray(position, configuration.getSize());
+        int[] current = convertCoordinateToArray(position, CustomConfiguration.getInstance().getSize());
         int Row = current[0];
         int Col = current[1];
         Coordinates coordinates = new Coordinates(Row, Col);

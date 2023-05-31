@@ -12,28 +12,16 @@ import java.util.List;
 
 public class GamePlayerVsPlayer extends Game{
 
-    public GamePlayerVsPlayer(Input input, Display display, CustomConfiguration configuration) {
-        super(input, display, configuration);
+    private Player firstPlayer;
+    private Player secondPlayer;
+
+    public GamePlayerVsPlayer() {
         prepareGame();
     }
 
     @Override
     public void prepareGame() {
-        firstPlayer = createPlayer();
-        secondPlayer = createPlayer();
+        firstPlayer = PlayerFactory.createHumanPlayer();
+        secondPlayer = PlayerFactory.createHumanPlayer();
     }
-
-    private Player createPlayer(){
-        return new HumanPlayer();
-//        String name = input.getName();
-//        Player player = PlayerFactory.createHumanPlayer(input, name);
-//        player.createShipsList();
-//        Board playerCheckingBoard = new Board(player.getShips());
-//        player.setCheckingBoard(playerCheckingBoard);
-//        return player;
-    }
-
-
-
-
 }

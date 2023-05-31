@@ -8,14 +8,14 @@ import com.codecool.view.Input;
 
 public class GameFactory {
 
-    public static Game createGame(GameMode gameMode, Input input, Display display, CustomConfiguration configuration) {
+    public static Game createGame(GameMode gameMode) {
         switch (gameMode) {
             case PLAYER_VS_PLAYER:
-                return new GamePlayerVsPlayer(input, display, configuration);
+                return new GamePlayerVsPlayer();
             case PLAYER_VS_PC:
-                return new GamePlayerVsComputer(input, display, configuration);
+                return new GamePlayerVsComputer();
             case PC_VS_PC:
-                return new GameComputerVsComputer(input, display, configuration);
+                return new GameComputerVsComputer();
             default:
                 return null;
         }

@@ -4,8 +4,8 @@ import com.codecool.view.Input;
 
 public class PlayerFactory {
 
-    public static Player createHumanPlayer(Input input, String name) {
-        return new HumanPlayer(name, input);
+    public static Player createHumanPlayer() {
+        return new HumanPlayer();
     }
 
     public static Player createPcPlayer(PlayerLevel playerLevel) {
