@@ -12,16 +12,12 @@ import java.util.List;
 
 public class GamePlayerVsPlayer extends Game{
 
-    private Player firstPlayer;
-    private Player secondPlayer;
-
     public GamePlayerVsPlayer() {
-        prepareGame();
+        super(
+                PlayerFactory.createHumanPlayer(),
+                PlayerFactory.createHumanPlayer()
+        );
     }
 
-    @Override
-    public void prepareGame() {
-        firstPlayer = PlayerFactory.createHumanPlayer();
-        secondPlayer = PlayerFactory.createHumanPlayer();
-    }
+
 }

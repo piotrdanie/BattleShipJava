@@ -4,7 +4,9 @@ public enum SquareStatus {
     EMPTY('□'),
     SHIP('■'),
     HIT('✖'),
-    MISSED('●');
+    MISSED('●'),
+    // implementation
+    SINK('S');
 
     private final char symbol;
 
