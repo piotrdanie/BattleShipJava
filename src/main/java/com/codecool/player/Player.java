@@ -16,7 +16,15 @@ public abstract class Player {
 
     protected Player(String name, ShipFactory shipFactory) {
         this.name = name;
+        this.checkingBoard = new Board();
         this.playerBoard = new Board();
         this.ships = shipFactory.create(playerBoard);
+    }
+
+    public boolean isAlive() {
+        if (ships.size() == 0) {
+            return false;
+        }
+        return true;
     }
 }
