@@ -20,5 +20,6 @@ public class Square {
     public Coordinates getCoordinates(){return coordinates;}
 
     public void setSquareStatus(SquareStatus squareStatus) {
+        this.squareStatus = squareStatus;
     }
 }

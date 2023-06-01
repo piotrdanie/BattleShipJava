@@ -153,11 +153,24 @@ public class Input {
         return columnsDict.get(String.valueOf(letter.charAt(0)));
     }
 
-    private Coordinates crateCoordinate (String position){
+    private Coordinates crateCoordinate (String position) {
         int[] current = convertCoordinateToArray(position, CustomConfiguration.getInstance().getSize());
         int Row = current[0];
         int Col = current[1];
         Coordinates coordinates = new Coordinates(Row, Col);
-        return  coordinates;
-    };
+        return coordinates;
+    }
+
+// TODO use it
+    private boolean coordinateInBoardSize(Coordinates coordinates) {
+        int size = CustomConfiguration.getInstance().getSize();
+        if (0 < coordinates.getX() && coordinates.getX() <= size
+                && 0 < coordinates.getY() && coordinates.getY() <= size) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+
 }

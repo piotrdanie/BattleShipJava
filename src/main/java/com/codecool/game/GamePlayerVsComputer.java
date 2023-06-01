@@ -7,8 +7,8 @@ import com.codecool.view.Input;
 
 public class GamePlayerVsComputer extends Game{
 
-    @Override
-    public void prepareGame() {
-
+    public GamePlayerVsComputer(Player firstPlayer, Player secondPlayer) {
+        super(firstPlayer, secondPlayer);
     }
+
 }

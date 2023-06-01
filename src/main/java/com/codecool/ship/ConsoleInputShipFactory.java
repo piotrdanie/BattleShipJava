@@ -21,24 +21,28 @@ public class ConsoleInputShipFactory implements ShipFactory {
         this.playerShips = new ArrayList<>();
     }
 
+
+
     @Override
     public List<Ship> create(Board placementBoard) {
+        Display.getInstance().printBoard(placementBoard);
         HashMap<ShipType, Integer> numberOfShips = CustomConfiguration.getInstance().getNumberOfShips();
         for(Map.Entry<ShipType, Integer> shipTypeAndNumber : numberOfShips.entrySet()) {
             for (int i = 0; i < shipTypeAndNumber.getValue(); i++) {
-                Ship actualShip = createShipRecurent(shipTypeAndNumber);
+                Ship actualShip = createShipRecurent(shipTypeAndNumber, placementBoard);
                 playerShips.add(actualShip);
+                Display.getInstance().printBoard(placementBoard);
             }
         }
         return playerShips;
     }
 
-    private Ship createShipRecurent(Map.Entry<ShipType, Integer> shipTypeAndNumber) {
+    private Ship createShipRecurent(Map.Entry<ShipType, Integer> shipTypeAndNumber, Board placementBoard) {
         Display.getInstance().printMessage("Please provide the data for placing the: " + shipTypeAndNumber.getKey());
-        Ship actualShip = createShip(shipTypeAndNumber.getKey());
-        if (shipAlreadyExists(actualShip, playerShips)) {
-            Display.getInstance().printMessage("This square is already ocuppied.");
-            return createShipRecurent(shipTypeAndNumber);
+        Ship actualShip = createShip(shipTypeAndNumber.getKey(), placementBoard);
+        if (!shipAlreadyExists(actualShip, playerShips)) {
+            Display.getInstance().printMessage("This square is already occupied.");
+            return createShipRecurent(shipTypeAndNumber, placementBoard);
         } else {
             return actualShip;
         }
@@ -58,18 +62,30 @@ public class ConsoleInputShipFactory implements ShipFactory {
         return true;
     }
 
-    private Ship createShip(ShipType shipType) {
-        // ask for coordinates
+    //check that the ship fits on board
+    //TODO use it :)
+    private boolean shipInBoard(ShipType shipType, Coordinates startCoordinates, CustomConfiguration configuration) {
+        if (startCoordinates.getX() + shipType.getSize() > configuration.getSize()
+                || startCoordinates.getY() + shipType.getSize() > configuration.getSize()) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+
+    private Ship createShip(ShipType shipType, Board placementBoard) {
+
         Coordinates startCoordinates = Input.getInstance().getCoordinates();
+
+        // set square status as ship
+        placementBoard.getOcean()[startCoordinates.getX()][startCoordinates.getY()].setSquareStatus(SquareStatus.SHIP);
+
         // ask for orientation
         Orientation orientation = Input.getInstance().getOrientation();
+
         // get the size of the ship
         int shipSize = shipType.getSize();
-
-
-        // calculate Coordinates of the rest squares
-        // get Square from board
-        Square firstSquare = new Square(SquareStatus.SHIP, startCoordinates);
 
         // create list od squares
         List<Square> shipSquares = new ArrayList<>();
@@ -79,20 +95,24 @@ public class ConsoleInputShipFactory implements ShipFactory {
             Coordinates actualCoordinates;
 
             switch (orientation) {
-                case HORIZONTAL:
+                case VERTICAL:
                     actualCoordinates = new Coordinates(startCoordinates.getX() +l, startCoordinates.getY());
                     break;
-                case VERTICAL:
+                case HORIZONTAL:
                     actualCoordinates = new Coordinates(startCoordinates.getX(), startCoordinates.getY() + l);
                     break;
                 default:
                     actualCoordinates = new Coordinates(startCoordinates.getX(), startCoordinates.getY() + l);
                     break;
             }
-            Square actualSquare = new Square(SquareStatus.SHIP, actualCoordinates);
+
+            Square actualSquare = placementBoard.getOcean()[actualCoordinates.getX()][actualCoordinates.getY()];
+            actualSquare.setSquareStatus(SquareStatus.SHIP);
             shipSquares.add(actualSquare);
         }
 
         return new Ship(shipType, shipSquares);
     }
+
+
 }
