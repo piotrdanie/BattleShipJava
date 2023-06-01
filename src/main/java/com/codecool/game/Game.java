@@ -1,9 +1,6 @@
 package com.codecool.game;
 
-import com.codecool.CustomConfiguration;
 import com.codecool.player.Player;
-import com.codecool.view.Display;
-import com.codecool.view.Input;
 
 
 public abstract class Game {
@@ -15,4 +12,13 @@ public abstract class Game {
         this.firstPlayer = firstPlayer;
         this.secondPlayer = secondPlayer;
     }
+
+//    private Player switchMove() {
+//        if (firstPlayer) {
+//            return secondPlayer;
+//        } else {
+//            return firstPlayer;
+//        }
+//    }
+
 }

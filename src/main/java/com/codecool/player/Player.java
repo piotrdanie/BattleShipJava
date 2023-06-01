@@ -27,4 +27,23 @@ public abstract class Player {
         }
         return true;
     }
+
+    //poczatek implementacj strzelania
+//    public void shoot() {
+//        if (coordinateInBoardSize(targetCoordinates)) {
+//            Square targetSquare = board.getOcean()[targetCoordinates.getX()][targetCoordinates.getY()];
+//            SquareStatus targetStatus = targetSquare.getSquareStatus();
+//
+//            if (targetStatus == SquareStatus.SHIP) {
+//                targetSquare.setSquareStatus(SquareStatus.HIT);
+//                Display.getInstance().printMessage("It's a hit!");
+//            } else {
+//                targetSquare.setSquareStatus(SquareStatus.MISSED);
+//                Display.getInstance().printMessage("It's a miss.");
+//            }
+//        } else {
+//            Display.getInstance().printMessage("Invalid target coordinates.");
+//        }
+//    }
+
 }
