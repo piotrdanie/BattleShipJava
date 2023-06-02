@@ -9,7 +9,7 @@ import java.util.List;
 public class Board {
 
     private int size = 10;
-    private Square[][] ocean;
+    public Square[][] ocean;
 
     // board shouldn't have the shipList, this is property of the player
 //    private List<Ship> shipList;
@@ -20,10 +20,6 @@ public class Board {
         initializeOcean();
     }
 
-//    public Board(List<Ship> shipList){
-//        ocean = new Square[size][size];
-//        initializeOcean(shipList);
-//    }
 
     public boolean isPlacementOk(Coordinates coordinates) {
         return (ocean[coordinates.getX()][coordinates.getY()].getSquareStatus().equals(SquareStatus.EMPTY));

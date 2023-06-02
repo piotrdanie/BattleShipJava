@@ -2,6 +2,8 @@ package com.codecool.view;
 
 import com.codecool.CustomConfiguration;
 import com.codecool.board.Board;
+import com.codecool.player.HumanPlayer;
+import com.codecool.player.Player;
 
 import java.util.List;
 
@@ -50,20 +52,30 @@ public class Display {
     }
 
 
-    public void printBoard(Board board) {
+    public void printBoard(Board firstBoard, Board secondBoard) {
         int size = CustomConfiguration.getInstance().getSize();
         char rowLabel = 'A';
         System.out.println(" "+ printNumber(size));
         for (int row = 0; row < size; row++) {
             System.out.print((char) (rowLabel + row) + " ");;
             for (int col = 0; col < size; col++) {
-                System.out.print(board.getOcean()[row][col].getSquareStatus().getSymbol() + " ");
+                System.out.print(firstBoard.getOcean()[row][col].getSquareStatus().getSymbol() + " ");
 
             }
             System.out.print((char) (rowLabel + row) + " ");
             System.out.println();
         }
         System.out.println(" "+ printNumber(size));
+        for (int row = 0; row < size; row++) {
+            System.out.print((char) (rowLabel + row) + " ");;
+            for (int col = 0; col < size; col++) {
+                System.out.print(secondBoard.getOcean()[row][col].getSquareStatus().getSymbol() + " ");
+
+            }
+            System.out.print((char) (rowLabel + row) + " ");
+            System.out.println();
+        }
+
         System.out.println();
     }
 

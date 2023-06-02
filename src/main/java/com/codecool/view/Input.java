@@ -171,6 +171,14 @@ public class Input {
             return false;
         }
     }
+//    public boolean coordinateCheck(String coordinate) {
+//        if (coordinate.length() == 2) {
+//            return coordinate.matches("\\D\\d");
+//        } else if (coordinate.length() == 3) {
+//            return coordinate.matches("\\D\\d\\d");
+//        }
+//        return false;
+//    }
 
 
 }

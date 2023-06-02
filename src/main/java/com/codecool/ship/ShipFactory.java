@@ -7,5 +7,5 @@ import java.util.List;
 
 public interface ShipFactory {
 
-    List<Ship> create(Board placementBoard);
+    List<Ship> create(Board placementBoard, Board checkingBoard);
 }

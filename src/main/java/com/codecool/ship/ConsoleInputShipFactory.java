@@ -24,14 +24,14 @@ public class ConsoleInputShipFactory implements ShipFactory {
 
 
     @Override
-    public List<Ship> create(Board placementBoard) {
-        Display.getInstance().printBoard(placementBoard);
+    public List<Ship> create(Board placementBoard, Board shootingBoard) {
+        Display.getInstance().printBoard(placementBoard, shootingBoard);
         HashMap<ShipType, Integer> numberOfShips = CustomConfiguration.getInstance().getNumberOfShips();
         for(Map.Entry<ShipType, Integer> shipTypeAndNumber : numberOfShips.entrySet()) {
             for (int i = 0; i < shipTypeAndNumber.getValue(); i++) {
                 Ship actualShip = createShipRecurent(shipTypeAndNumber, placementBoard);
                 playerShips.add(actualShip);
-                Display.getInstance().printBoard(placementBoard);
+                Display.getInstance().printBoard(placementBoard,shootingBoard);
             }
         }
         return playerShips;

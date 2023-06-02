@@ -13,6 +13,10 @@ public abstract class Game {
         this.secondPlayer = secondPlayer;
     }
 
+    public void whatever(){
+        firstPlayer.shoot();
+    }
+
 //    private Player switchMove() {
 //        if (firstPlayer) {
 //            return secondPlayer;
