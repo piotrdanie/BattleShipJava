@@ -20,10 +20,10 @@ public class Board {
         initializeOcean();
     }
 
-    public Board(List<Ship> shipList){
-        ocean = new Square[size][size];
-        initializeOcean(shipList);
-    }
+//    public Board(List<Ship> shipList){
+//        ocean = new Square[size][size];
+//        initializeOcean(shipList);
+//    }
 
     public boolean isPlacementOk(Coordinates coordinates) {
         return (ocean[coordinates.getX()][coordinates.getY()].getSquareStatus().equals(SquareStatus.EMPTY));
@@ -32,28 +32,12 @@ public class Board {
     public Square[][] getSquares() {
         return this.ocean;
     }
-    private void initializeOcean() {
-    }
 
-    private void initializeOcean(List<Ship> shipList) {
+    private void initializeOcean() {
         for (int row = 0; row < size; row++) {
             for (int col = 0; col < size; col++) {
-                boolean isOccupied = false;
-                for (Ship ship : shipList) {
-                    for (Square square : ship.getSquares()){
-                        if (square.getCoordinates().getX()  == row
-                        && square.getCoordinates().getY() == col){
-                            isOccupied = true;
-                            break;
-                        }
-                    }
-                    if (isOccupied){
-                        break;
-                    }
-                }
-                Coordinates coordinates = new Coordinates(row,col);
-                SquareStatus status = isOccupied ? SquareStatus.SHIP : SquareStatus.EMPTY;
-                ocean[row][col] = new Square(status, coordinates);
+                Coordinates coordinates = new Coordinates(row, col);
+                ocean[row][col] = new Square(SquareStatus.EMPTY, coordinates);
             }
         }
     }
