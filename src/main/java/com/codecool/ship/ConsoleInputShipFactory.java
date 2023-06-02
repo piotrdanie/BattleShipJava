@@ -26,19 +26,19 @@ public class ConsoleInputShipFactory implements ShipFactory {
         HashMap<ShipType, Integer> numberOfShips = CustomConfiguration.getInstance().getNumberOfShips();
         for(Map.Entry<ShipType, Integer> shipTypeAndNumber : numberOfShips.entrySet()) {
             for (int i = 0; i < shipTypeAndNumber.getValue(); i++) {
-                Ship actualShip = createShipRecurent(shipTypeAndNumber);
+                Ship actualShip = createShipRecursion(shipTypeAndNumber);
                 playerShips.add(actualShip);
             }
         }
         return playerShips;
     }
 
-    private Ship createShipRecurent(Map.Entry<ShipType, Integer> shipTypeAndNumber) {
+    private Ship createShipRecursion(Map.Entry<ShipType, Integer> shipTypeAndNumber) {
         Display.getInstance().printMessage("Please provide the data for placing the: " + shipTypeAndNumber.getKey());
         Ship actualShip = createShip(shipTypeAndNumber.getKey());
         if (shipAlreadyExists(actualShip, playerShips)) {
             Display.getInstance().printMessage("This square is already ocuppied.");
-            return createShipRecurent(shipTypeAndNumber);
+            return createShipRecursion(shipTypeAndNumber);
         } else {
             return actualShip;
         }
