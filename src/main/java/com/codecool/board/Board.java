@@ -11,15 +11,11 @@ public class Board {
     private int size = 10;
     public Square[][] ocean;
 
-    // board shouldn't have the shipList, this is property of the player
-//    private List<Ship> shipList;
-
 
     public Board() {
         ocean = new Square[size][size];
         initializeOcean();
     }
-
 
     public boolean isPlacementOk(Coordinates coordinates) {
         return (ocean[coordinates.getX()][coordinates.getY()].getSquareStatus().equals(SquareStatus.EMPTY));
@@ -40,5 +36,9 @@ public class Board {
 
     public Square[][] getOcean() {
         return ocean;
+    }
+
+    public Square getSquareByCoordinates(Coordinates coordinates) {
+        return this.ocean[coordinates.getX()][coordinates.getY()];
     }
 }

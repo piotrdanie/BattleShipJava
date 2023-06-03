@@ -16,7 +16,12 @@ public class Battleship {
             int option = Input.getInstance().getMainMenuOption();
             switch (option) {
                 case 1:
-                    createGame();
+                    // create the game, get input from the users in order to create the users
+                    // prepare the data for using in game
+                    Game game = createGame();
+
+                    // start game
+                    game.startGame();
                     break;
                 case 2:
                     // TODO print hall of fame

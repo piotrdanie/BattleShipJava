@@ -38,7 +38,11 @@ public class ConsoleInputShipFactory implements ShipFactory {
     }
 
     private Ship createShipRecurent(Map.Entry<ShipType, Integer> shipTypeAndNumber, Board placementBoard) {
-        Display.getInstance().printMessage("Please provide the data for placing the: " + shipTypeAndNumber.getKey());
+        Display.getInstance().printMessage("Please provide the data for placing the: "
+                + shipTypeAndNumber.getKey()
+                + " number of squares: "
+                + shipTypeAndNumber.getKey().getSize()
+        );
         Ship actualShip = createShip(shipTypeAndNumber.getKey(), placementBoard);
         if (!shipAlreadyExists(actualShip, playerShips)) {
             Display.getInstance().printMessage("This square is already occupied.");
@@ -73,13 +77,13 @@ public class ConsoleInputShipFactory implements ShipFactory {
         }
     }
 
-
     private Ship createShip(ShipType shipType, Board placementBoard) {
 
         Coordinates startCoordinates = Input.getInstance().getCoordinates();
 
         // set square status as ship
-        placementBoard.getOcean()[startCoordinates.getX()][startCoordinates.getY()].setSquareStatus(SquareStatus.SHIP);
+        Square firstSquare = placementBoard.getSquareByCoordinates(startCoordinates);
+        firstSquare.setSquareStatus(SquareStatus.SHIP);
 
         // ask for orientation
         Orientation orientation = Input.getInstance().getOrientation();
@@ -105,14 +109,10 @@ public class ConsoleInputShipFactory implements ShipFactory {
                     actualCoordinates = new Coordinates(startCoordinates.getX(), startCoordinates.getY() + l);
                     break;
             }
-
-            Square actualSquare = placementBoard.getOcean()[actualCoordinates.getX()][actualCoordinates.getY()];
+            Square actualSquare = placementBoard.getSquareByCoordinates(actualCoordinates);
             actualSquare.setSquareStatus(SquareStatus.SHIP);
             shipSquares.add(actualSquare);
         }
-
         return new Ship(shipType, shipSquares);
     }
-
-
 }
