@@ -23,9 +23,7 @@ public abstract class Game {
     public void startGame() {
         while (otherPlayer.isAlive()) {
             playerTurn();
-
-            // TODO: switch players
-            // switchPlayers()
+            switchPlayers();
         }
     }
 
@@ -38,14 +36,17 @@ public abstract class Game {
 
         // wrote the square status on the player board
         actualPlayer.drawCheckingBoard(shootCoordinates, squareStatus);
+
     }
 
-//    private Player switchMove() {
-//        if (firstPlayer) {
-//            return secondPlayer;
-//        } else {
-//            return firstPlayer;
-//        }
-//    }
+    private void switchPlayers() {
+        if (actualPlayer.equals(firstPlayer)) {
+            actualPlayer = secondPlayer;
+            otherPlayer = firstPlayer;
+        } else {
+            actualPlayer = firstPlayer;
+            otherPlayer = secondPlayer;
+        }
+    }
 
 }

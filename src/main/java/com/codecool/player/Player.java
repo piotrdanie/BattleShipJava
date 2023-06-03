@@ -36,6 +36,10 @@ public abstract class Player {
     
     public Coordinates shoot() {
         Coordinates targetCoordinates = Input.getInstance().getCoordinates();
+
+        // TODO: show the playerBoard and checkingBoard
+
+
 //        Square targetSquare = checkingBoard.getOcean()[targetCoordinates.getX()][targetCoordinates.getY()];
 //        SquareStatus targetSquareStatus =
 //                checkingBoard.getOcean()[targetCoordinates.getX()][targetCoordinates.getY()].getSquareStatus();
@@ -54,20 +58,6 @@ public abstract class Player {
 //                Display.getInstance().printMessage("It's a miss.");
 //        }
         return targetCoordinates;
-    }
-
-    public boolean shipHit(Coordinates coordinates) {
-        if (playerBoard.getSquareByCoordinates(coordinates).getSquareStatus().equals(SquareStatus.SHIP)) {
-            return true;
-        }
-        return false;
-    }
-
-    public boolean shipSink(Coordinates coordinates) {
-        if (playerBoard.getSquareByCoordinates(coordinates).getSquareStatus().equals(SquareStatus.SINK)) {
-            return true;
-        }
-        return false;
     }
 
 
