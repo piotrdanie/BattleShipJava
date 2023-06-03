@@ -57,6 +57,7 @@ public class Input {
         String inputCoordinates = scanner.next();
         return crateCoordinate(inputCoordinates);
     }
+
     public ShipType getShipType(){
         int option = getOption("ShipType");
         switch (option) {
@@ -131,12 +132,12 @@ public class Input {
         System.exit(0); // Exit with status code 0 (normal exit)
     }
 
-    private int[] convertCoordinateToArray(String userInput, int size) {
+    private int[] convertCoordinateToArray(String userInput) {
         int[] indices = new int[2];
         userInput = userInput.toUpperCase();
         String letter = userInput.substring(0, 1);
         int col = Integer.parseInt(userInput.substring(1))-1;
-        int row = convertStringToInteger(letter, size);
+        int row = convertStringToInteger(letter);
 
         indices[0] = row;
         indices[1] = col;
@@ -144,41 +145,46 @@ public class Input {
         return indices;
     }
 
-    private int convertStringToInteger(String letter, int size) {
+    private int convertStringToInteger(String letter) {
+        int size = CustomConfiguration.getInstance().getSize();
         HashMap<String, Integer> columnsDict = new HashMap<>();
-
         for (int row = 0; row < size; row++) {
             columnsDict.put(String.valueOf((char) ('A' + row)), row);
         }
         return columnsDict.get(String.valueOf(letter.charAt(0)));
     }
 
-    private Coordinates crateCoordinate (String position) {
-        int[] current = convertCoordinateToArray(position, CustomConfiguration.getInstance().getSize());
+    private Coordinates crateCoordinate (String input) {
+        if (!coordinateFormatCheck(input)){
+            Display.getInstance().printMessage("Wrong format!");
+            return getCoordinates();
+        }
+        int[] current = convertCoordinateToArray(input);
         int Row = current[0];
         int Col = current[1];
         Coordinates coordinates = new Coordinates(Row, Col);
+
+        if (!coordinateInBoardSize(coordinates)){
+            Display.getInstance().printMessage("Out of board!");
+            return getCoordinates();
+        }
         return coordinates;
     }
-
-// TODO use it
-    private boolean coordinateInBoardSize(Coordinates coordinates) {
+    public boolean coordinateInBoardSize(Coordinates coordinates) {
         int size = CustomConfiguration.getInstance().getSize();
-        if (0 < coordinates.getX() && coordinates.getX() <= size
-                && 0 < coordinates.getY() && coordinates.getY() <= size) {
+        if (0 <= coordinates.getX() && coordinates.getX() <= size
+                && 0 <= coordinates.getY() && coordinates.getY() <= size) {
             return true;
         } else {
             return false;
         }
     }
-//    public boolean coordinateCheck(String coordinate) {
-//        if (coordinate.length() == 2) {
-//            return coordinate.matches("\\D\\d");
-//        } else if (coordinate.length() == 3) {
-//            return coordinate.matches("\\D\\d\\d");
-//        }
-//        return false;
-//    }
-
-
+    public boolean coordinateFormatCheck(String coordinate) {
+        if (coordinate.length() == 2) {
+            return coordinate.matches("\\D\\d");
+        } else if (coordinate.length() == 3) {
+            return coordinate.matches("\\D\\d\\d");
+        }
+        return false;
+    }
 }

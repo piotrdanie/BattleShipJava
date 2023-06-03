@@ -35,17 +35,17 @@ public abstract class Player {
     }
     
     public Coordinates shoot() {
-
-        // get coordinates from the user
-        Coordinates targetCoordinates = Input.getInstance().getCoordinates();
-
         // Display the board to the user
         Display.getInstance().printBoard(playerBoard, checkingBoard);
+
+        // get coordinates from the user
+        Display.getInstance().printMessage(name + " you shoot");
+        Coordinates targetCoordinates = Input.getInstance().getCoordinates();
+
 
         // return the selected coordinates
         return targetCoordinates;
     }
-
 
     // public method to get response from other player if the shoot hit or missed the ship
     public SquareStatus responseToShoot(Coordinates coordinates) {
@@ -58,6 +58,7 @@ public abstract class Player {
                 break;
             case EMPTY:
                 square.setSquareStatus(SquareStatus.MISSED);
+                Display.getInstance().printMessage("You missed the cowardly shrimp");
                 break;
         }
         return square.getSquareStatus();
@@ -65,29 +66,39 @@ public abstract class Player {
 
     private void shipHit(Coordinates coordinates) {
         Square square = playerBoard.getSquareByCoordinates(coordinates);
+        Display.getInstance().printMessage("You've hit a ship!");
         square.setSquareStatus(SquareStatus.HIT);
-
-        // check if the ship is sunk - if the ship is sunk then remove it from the ships
-        Ship ship = getShipByCoordinates(coordinates);
-        if (ship.isSunk()) {
-            ships.remove(ship);
+        for (Ship hitShip : ships) {
+            Display.getInstance().printMessage("test");
+            for (Square hitSquare : hitShip.getSquares()) {
+                Display.getInstance().printMessage("test1");
+                if (hitSquare.getCoordinates().equals(coordinates)) {
+                    Display.getInstance().printMessage("test1");
+                    if (hitShip.isSunk()) {
+                        Display.getInstance().printMessage("You've sunk a ship!");
+                        ships.remove(hitShip);
+                    }
+                }
+            }
         }
+        // check if the ship is sunk - if the ship is sunk then remove it from the ships
+//        Ship ship = getShipByCoordinates(coordinates);
+//        if (ship.isSunk()) {
+//            ships.remove(ship);
     }
-
 
     public void drawCheckingBoard(Coordinates shootCoordinates, SquareStatus squareStatus) {
         this.checkingBoard.getSquareByCoordinates(shootCoordinates).setSquareStatus(squareStatus);
     }
 
-    public Ship getShipByCoordinates(Coordinates coordinates) {
-        for (Ship ship : ships) {
-            for (Square square : ship.getSquares()) {
-               if (square.getCoordinates().equals(coordinates)) {
-                   return ship;
-               }
-            }
-        }
-        return null;
-    }
-
+//    public Ship getShipByCoordinates(Coordinates coordinates) {
+//        for (Ship ship : ships) {
+//            for (Square square : ship.getSquares()) {
+//               if (square.getCoordinates().equals(coordinates)) {
+//                 return ship;
+//               }
+//            }
+//    }
+//        return null;
+//    }
 }

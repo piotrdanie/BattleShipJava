@@ -51,33 +51,29 @@ public class Display {
         }
     }
 
-
     public void printBoard(Board firstBoard, Board secondBoard) {
         int size = CustomConfiguration.getInstance().getSize();
         char rowLabel = 'A';
-        System.out.println(" "+ printNumber(size));
+
+        System.out.println(" " + printNumber(size) + "     " + printNumber(size));
         for (int row = 0; row < size; row++) {
-            System.out.print((char) (rowLabel + row) + " ");;
+            System.out.print((char) (rowLabel + row) + " ");
             for (int col = 0; col < size; col++) {
                 System.out.print(firstBoard.getOcean()[row][col].getSquareStatus().getSymbol() + " ");
-
             }
-            System.out.print((char) (rowLabel + row) + " ");
-            System.out.println();
-        }
-        System.out.println(" "+ printNumber(size));
-        for (int row = 0; row < size; row++) {
-            System.out.print((char) (rowLabel + row) + " ");;
+            System.out.print(" "+(char) (rowLabel + row) + "  ");
             for (int col = 0; col < size; col++) {
                 System.out.print(secondBoard.getOcean()[row][col].getSquareStatus().getSymbol() + " ");
-
             }
             System.out.print((char) (rowLabel + row) + " ");
             System.out.println();
         }
 
+        System.out.println(" " + printNumber(size) + "     " + printNumber(size));
         System.out.println();
+
     }
+
 
     private StringBuilder printNumber(int size){
         StringBuilder sb = new StringBuilder();
@@ -118,23 +114,4 @@ public class Display {
         System.out.println("The game exited");
     }
 
-    private void translationCharToEmoji() {
-
-        // translation_char_to_emoji = {
-        //    '#':'🧱',
-        //    '@':'🧍',
-        //    '&':'🧚',
-        //    '!':'👾',
-        //    '>':'🚪',
-        //    '*':'🍕',
-        //    '%':'🔫',
-        //    '^':'⚡',
-        //    '+':'💎',
-        //    '?':'🧛',
-        //    '1':' 1️⃣',
-        //    '2':' 2️⃣',
-        //    '3':' 3️⃣',
-        //    ' ':'  '
-        //    }
-    }
 }

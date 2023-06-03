@@ -47,7 +47,8 @@ public class ConsoleInputShipFactory implements ShipFactory {
         if (!shipAlreadyExists(actualShip, playerShips)) {
             Display.getInstance().printMessage("This square is already occupied.");
             return createShipRecurent(shipTypeAndNumber, placementBoard);
-        } else {
+        }
+        else {
             return actualShip;
         }
     }
@@ -67,10 +68,9 @@ public class ConsoleInputShipFactory implements ShipFactory {
     }
 
     //check that the ship fits on board
-    //TODO use it :)
-    private boolean shipInBoard(ShipType shipType, Coordinates startCoordinates, CustomConfiguration configuration) {
-        if (startCoordinates.getX() + shipType.getSize() > configuration.getSize()
-                || startCoordinates.getY() + shipType.getSize() > configuration.getSize()) {
+    private boolean shipInBoard(ShipType shipType, Coordinates startCoordinates) {
+        if (startCoordinates.getX() + shipType.getSize() > CustomConfiguration.getInstance().getSize()
+                || startCoordinates.getY() + shipType.getSize() > CustomConfiguration.getInstance().getSize()) {
             return false;
         } else {
             return true;
@@ -80,6 +80,10 @@ public class ConsoleInputShipFactory implements ShipFactory {
     private Ship createShip(ShipType shipType, Board placementBoard) {
 
         Coordinates startCoordinates = Input.getInstance().getCoordinates();
+
+        if (!shipInBoard(shipType, startCoordinates)) {
+            return createShip(shipType, placementBoard);
+        }
 
         // set square status as ship
         Square firstSquare = placementBoard.getSquareByCoordinates(startCoordinates);

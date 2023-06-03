@@ -18,16 +18,4 @@ public class GamePlayerVsPlayer extends Game{
                 PlayerFactory.createHumanPlayer()
         );
     }
-//    public void switchRound(){
-//        if (int player == 1);
-//        {
-//            int player = 2;
-//            return player;
-//        }
-//        else (player == 2){
-//            player = 1;
-//            return player;
-//        }
-//    }
-
 }

@@ -34,24 +34,4 @@ public class Ship {
     public List<Square> getSquares() {
         return squares;
     }
-
-//    public void setSunk() {
-//        for (Square square : this.squares) {
-//            square.setSquareStatus(SquareStatus.SINK);
-//        }
-//        Display.getInstance().printMessage("You've sunk a ship!");
-//        this.isSunk = true;
-//    }
-//
-//    public boolean isSunk() {
-//        return this.isSunk;
-//    }
-//
-//    public void canShipSink() {
-//        boolean shouldBeSunk = true;
-//        for (Square nextSquare : squares) {
-//            if (!nextSquare.getSquareStatus().equals(SquareStatus.HIT)) shouldBeSunk = false;
-//        }
-//        if (shouldBeSunk && !this.isSunk) setSunk();
-//    }
 }

@@ -3,6 +3,7 @@ package com.codecool.game;
 import com.codecool.board.Coordinates;
 import com.codecool.player.Player;
 import com.codecool.square.SquareStatus;
+import com.codecool.view.Display;
 
 
 public abstract class Game {
@@ -25,7 +26,11 @@ public abstract class Game {
             playerTurn();
             switchPlayers();
         }
+        if (!otherPlayer.isAlive()){
+            Display.getInstance().printMessage("Game over!");
+        }
     }
+
 
     public void playerTurn(){
         // get the coordinates from Player
@@ -36,7 +41,6 @@ public abstract class Game {
 
         // wrote the square status on the player board
         actualPlayer.drawCheckingBoard(shootCoordinates, squareStatus);
-
     }
 
     private void switchPlayers() {
