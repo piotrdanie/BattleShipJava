@@ -35,28 +35,14 @@ public abstract class Player {
     }
     
     public Coordinates shoot() {
+
+        // get coordinates from the user
         Coordinates targetCoordinates = Input.getInstance().getCoordinates();
 
-        // TODO: show the playerBoard and checkingBoard
+        // Display the board to the user
+        Display.getInstance().printBoard(playerBoard, checkingBoard);
 
-
-//        Square targetSquare = checkingBoard.getOcean()[targetCoordinates.getX()][targetCoordinates.getY()];
-//        SquareStatus targetSquareStatus =
-//                checkingBoard.getOcean()[targetCoordinates.getX()][targetCoordinates.getY()].getSquareStatus();
-//
-//        if (targetSquareStatus == SquareStatus.SHIP) {
-//                targetSquare.setSquareStatus(SquareStatus.HIT);
-//                if (isSunk()){
-//                    targetSquare.setSquareStatus(SquareStatus.SINK);
-//                    Display.getInstance().printMessage("Hit and sink!");
-//                } else {
-//                    Display.getInstance().printMessage("It's a hit!");
-//                }
-//        }
-//        else if (targetSquareStatus == SquareStatus.EMPTY){
-//                targetSquare.setSquareStatus(SquareStatus.MISSED);
-//                Display.getInstance().printMessage("It's a miss.");
-//        }
+        // return the selected coordinates
         return targetCoordinates;
     }
 
@@ -68,19 +54,24 @@ public abstract class Player {
 
         switch (actualSquareStatus) {
             case SHIP:
-                square.setSquareStatus(SquareStatus.HIT);
-
-                // check if the ship is sunk - if the ship is sunk then remove it from the ships
-                Ship ship = getShipByCoordinates(coordinates);
-                if (ship.isSunk()) {
-                    ships.remove(ship);
-                }
+                shipHit(coordinates);
                 break;
             case EMPTY:
                 square.setSquareStatus(SquareStatus.MISSED);
                 break;
         }
         return square.getSquareStatus();
+    }
+
+    private void shipHit(Coordinates coordinates) {
+        Square square = playerBoard.getSquareByCoordinates(coordinates);
+        square.setSquareStatus(SquareStatus.HIT);
+
+        // check if the ship is sunk - if the ship is sunk then remove it from the ships
+        Ship ship = getShipByCoordinates(coordinates);
+        if (ship.isSunk()) {
+            ships.remove(ship);
+        }
     }
 
 
