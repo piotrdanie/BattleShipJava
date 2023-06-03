@@ -79,29 +79,34 @@ public abstract class Player {
         switch (actualSquareStatus) {
             case SHIP:
                 square.setSquareStatus(SquareStatus.HIT);
+
+                // check if the ship is sunk - if the ship is sunk then remove it from the ships
+                Ship ship = getShipByCoordinates(coordinates);
+                if (ship.isSunk()) {
+                    ships.remove(ship);
+                }
                 break;
             case EMPTY:
                 square.setSquareStatus(SquareStatus.MISSED);
                 break;
         }
-
         return square.getSquareStatus();
     }
 
 
-    private boolean isSunk(){
-        for (Ship ship : ships){
-            for (Square square : ship.getSquares()){
-                if (square.getSquareStatus() == SquareStatus.HIT) {
-                    return true;
-                }
+    public void drawCheckingBoard(Coordinates shootCoordinates, SquareStatus squareStatus) {
+        this.checkingBoard.getSquareByCoordinates(shootCoordinates).setSquareStatus(squareStatus);
+    }
+
+    public Ship getShipByCoordinates(Coordinates coordinates) {
+        for (Ship ship : ships) {
+            for (Square square : ship.getSquares()) {
+               if (square.getCoordinates().equals(coordinates)) {
+                   return ship;
+               }
             }
         }
-        return false;
+        return null;
     }
 
-
-    public void drawCheckingBoard(Coordinates shootCoordinates, SquareStatus squareStatus) {
-
-    }
 }

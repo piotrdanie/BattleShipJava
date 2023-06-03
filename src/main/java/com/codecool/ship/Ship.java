@@ -22,6 +22,15 @@ public class Ship {
 //        this.isSunk = false;
     }
 
+    public boolean isSunk() {
+        for (Square square : squares) {
+            if (square.getSquareStatus().equals(SquareStatus.SHIP)) {
+                return false;
+            }
+        }
+        return true;
+    }
+
     public List<Square> getSquares() {
         return squares;
     }
