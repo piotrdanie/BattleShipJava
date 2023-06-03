@@ -21,7 +21,7 @@ public abstract class Game {
     }
 
     public void startGame() {
-        while (true) {
+        while (otherPlayer.isAlive()) {
             playerTurn();
 
             // TODO: switch players

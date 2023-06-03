@@ -19,8 +19,6 @@ public abstract class Player {
     private final Board playerBoard;
     private final Board checkingBoard;
 
-//    private Ship ship;
-
 
     protected Player(String name, ShipFactory shipFactory) {
         this.name = name;
