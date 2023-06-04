@@ -74,9 +74,9 @@ public class CustomConfiguration{
 
     private HashMap<ShipType, Integer> initializeNumberOfShips() {
         HashMap<ShipType, Integer> mapNumberOfShips = new HashMap<>();
-//        mapNumberOfShips.put(ShipType.BATTLESHIP, 1);
-//        mapNumberOfShips.put(ShipType.CARRIER, 1);
-//        mapNumberOfShips.put(ShipType.CRUISER, 1);
+        mapNumberOfShips.put(ShipType.BATTLESHIP, 1);
+        mapNumberOfShips.put(ShipType.CARRIER, 1);
+        mapNumberOfShips.put(ShipType.CRUISER, 1);
         mapNumberOfShips.put(ShipType.DESTROYER, 1);
         mapNumberOfShips.put(ShipType.SUBMARINE, 1);
         return mapNumberOfShips;
