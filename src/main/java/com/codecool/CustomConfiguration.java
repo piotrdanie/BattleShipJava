@@ -37,7 +37,7 @@ public class CustomConfiguration{
         optionsMap.put("Mode", createGameModeMenu());
         optionsMap.put("Level", createGameLevelMenu());
         optionsMap.put("Orientation", createOrientationMenu());
-        optionsMap.put("ShipType", createShipTypeMenu());
+//        optionsMap.put("ShipType", createShipTypeMenu());
         return optionsMap;
     }
 
@@ -74,22 +74,22 @@ public class CustomConfiguration{
 
     private HashMap<ShipType, Integer> initializeNumberOfShips() {
         HashMap<ShipType, Integer> mapNumberOfShips = new HashMap<>();
-        mapNumberOfShips.put(ShipType.BATTLESHIP, 1);
+//        mapNumberOfShips.put(ShipType.BATTLESHIP, 1);
 //        mapNumberOfShips.put(ShipType.CARRIER, 1);
 //        mapNumberOfShips.put(ShipType.CRUISER, 1);
-//        mapNumberOfShips.put(ShipType.DESTROYER, 1);
-//        mapNumberOfShips.put(ShipType.SUBMARINE, 1);
+        mapNumberOfShips.put(ShipType.DESTROYER, 1);
+        mapNumberOfShips.put(ShipType.SUBMARINE, 1);
         return mapNumberOfShips;
     }
-    private List<String> createShipTypeMenu() {
-        ArrayList<String> shipTypeMenu = new ArrayList<>();
-        shipTypeMenu.add("BATTLESHIP");
-        shipTypeMenu.add("CARRIER");
-        shipTypeMenu.add("CRUISER");
-        shipTypeMenu.add("DESTROYER");
-        shipTypeMenu.add("SUBMARINE");
-        return shipTypeMenu;
-    }
+//    private List<String> createShipTypeMenu() {
+//        ArrayList<String> shipTypeMenu = new ArrayList<>();
+//        shipTypeMenu.add("BATTLESHIP");
+//        shipTypeMenu.add("CARRIER");
+//        shipTypeMenu.add("CRUISER");
+//        shipTypeMenu.add("DESTROYER");
+//        shipTypeMenu.add("SUBMARINE");
+//        return shipTypeMenu;
+//    }
 
     public int getSize() {
         return size;

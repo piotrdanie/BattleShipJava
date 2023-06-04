@@ -68,37 +68,32 @@ public abstract class Player {
         Square square = playerBoard.getSquareByCoordinates(coordinates);
         Display.getInstance().printMessage("You've hit a ship!");
         square.setSquareStatus(SquareStatus.HIT);
-        for (Ship hitShip : ships) {
-            Display.getInstance().printMessage("test");
-            for (Square hitSquare : hitShip.getSquares()) {
-                Display.getInstance().printMessage("test1");
-                if (hitSquare.getCoordinates().equals(coordinates)) {
-                    Display.getInstance().printMessage("test1");
-                    if (hitShip.isSunk()) {
-                        Display.getInstance().printMessage("You've sunk a ship!");
-                        ships.remove(hitShip);
-                    }
-                }
-            }
-        }
+
+
         // check if the ship is sunk - if the ship is sunk then remove it from the ships
-//        Ship ship = getShipByCoordinates(coordinates);
-//        if (ship.isSunk()) {
-//            ships.remove(ship);
+        Ship ship = getShipByCoordinates(coordinates);
+        if (ship.isSunk()) {
+            for (Square hitSquare : ship.getSquares()){
+                hitSquare.setSquareStatus(SquareStatus.SINK);
+            }
+            Display.getInstance().printMessage("You've sunk a ship!");
+            ships.remove(ship);
+        }
     }
+
 
     public void drawCheckingBoard(Coordinates shootCoordinates, SquareStatus squareStatus) {
         this.checkingBoard.getSquareByCoordinates(shootCoordinates).setSquareStatus(squareStatus);
     }
 
-//    public Ship getShipByCoordinates(Coordinates coordinates) {
-//        for (Ship ship : ships) {
-//            for (Square square : ship.getSquares()) {
-//               if (square.getCoordinates().equals(coordinates)) {
-//                 return ship;
-//               }
-//            }
-//    }
-//        return null;
-//    }
+    public Ship getShipByCoordinates(Coordinates coordinates) {
+        for (Ship ship : ships) {
+            for (Square square : ship.getSquares()) {
+               if (!square.getCoordinates().equals(coordinates)) {
+                 return ship;
+               }
+            }
+    }
+        return null;
+    }
 }

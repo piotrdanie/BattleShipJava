@@ -13,13 +13,12 @@ public class Ship {
 
     private final List<Square> squares;
     private final ShipType shipType;
-//    private boolean isSunk;
+
 
 
     public Ship(ShipType shipType, List<Square> squares) {
         this.shipType = shipType;
         this.squares = squares;
-//        this.isSunk = false;
     }
 
     public boolean isSunk() {
