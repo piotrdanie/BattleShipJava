@@ -22,12 +22,19 @@ public abstract class Game {
     }
 
     public void startGame() {
-        while (otherPlayer.isAlive()) {
+        while (true) {
             playerTurn();
             switchPlayers();
-        }
-        if (!otherPlayer.isAlive()){
-            Display.getInstance().printMessage("Game over!");
+            if (!otherPlayer.isAlive()){
+                Display.getInstance().printMessage(actualPlayer.getName() + " win!");
+                Display.getInstance().printMessage("Game over!");
+                break;
+            }
+            else if (!actualPlayer.isAlive()){
+                Display.getInstance().printMessage(otherPlayer.getName() + " win!");
+                Display.getInstance().printMessage("Game over!");
+                break;
+            }
         }
     }
 

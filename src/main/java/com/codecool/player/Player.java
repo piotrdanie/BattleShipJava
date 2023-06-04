@@ -33,7 +33,11 @@ public abstract class Player {
         }
         return true;
     }
-    
+
+    public String getName() {
+        return name;
+    }
+
     public Coordinates shoot() {
         // Display the board to the user
         Display.getInstance().printBoard(playerBoard, checkingBoard);
